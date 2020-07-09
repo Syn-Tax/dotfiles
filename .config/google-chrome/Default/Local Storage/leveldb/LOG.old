@@ -1,0 +1,39 @@
+2020/07/09-10:10:09.273 1724 Reusing MANIFEST /home/oscar/.config/google-chrome/Default/Local Storage/leveldb/MANIFEST-000001
+2020/07/09-10:10:09.276 1724 Recovering log #12
+2020/07/09-10:10:09.277 1724 Reusing old log /home/oscar/.config/google-chrome/Default/Local Storage/leveldb/000012.log 
+2020/07/09-10:10:16.365 18ff Level-0 table #16: started
+2020/07/09-10:10:16.376 18ff Level-0 table #16: 13867 bytes OK
+2020/07/09-10:10:16.383 18ff Delete type=0 #12
+2020/07/09-10:10:16.383 18ff Compacting 4@0 + 1@1 files
+2020/07/09-10:10:16.396 18ff Generated table #17@0: 297 keys, 70686 bytes
+2020/07/09-10:10:16.396 18ff Compacted 4@0 + 1@1 files => 70686 bytes
+2020/07/09-10:10:16.402 18ff compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/07/09-10:10:16.403 18ff Delete type=2 #9
+2020/07/09-10:10:16.403 18ff Delete type=2 #7
+2020/07/09-10:10:16.403 18ff Delete type=2 #16
+2020/07/09-10:10:16.403 18ff Delete type=2 #11
+2020/07/09-10:10:16.403 18ff Delete type=2 #13
+2020/07/09-10:21:37.968 18ff Level-0 table #19: started
+2020/07/09-10:21:37.977 18ff Level-0 table #19: 60187 bytes OK
+2020/07/09-10:21:37.983 18ff Delete type=0 #15
+2020/07/09-10:24:12.710 18ff Level-0 table #21: started
+2020/07/09-10:24:12.718 18ff Level-0 table #21: 62061 bytes OK
+2020/07/09-10:24:12.725 18ff Delete type=0 #18
+2020/07/09-11:30:12.710 18ff Level-0 table #23: started
+2020/07/09-11:30:12.719 18ff Level-0 table #23: 13597 bytes OK
+2020/07/09-11:30:12.726 18ff Delete type=0 #20
+2020/07/09-11:51:12.710 18ff Level-0 table #25: started
+2020/07/09-11:51:12.718 18ff Level-0 table #25: 35085 bytes OK
+2020/07/09-11:51:12.727 18ff Delete type=0 #22
+2020/07/09-11:51:12.727 18ff Compacting 4@0 + 1@1 files
+2020/07/09-11:51:12.744 18ff Generated table #26@0: 391 keys, 158760 bytes
+2020/07/09-11:51:12.744 18ff Compacted 4@0 + 1@1 files => 158760 bytes
+2020/07/09-11:51:12.751 18ff compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/07/09-11:51:12.751 18ff Delete type=2 #17
+2020/07/09-11:51:12.751 18ff Delete type=2 #19
+2020/07/09-11:51:12.751 18ff Delete type=2 #21
+2020/07/09-11:51:12.751 18ff Delete type=2 #25
+2020/07/09-11:51:12.751 18ff Delete type=2 #23
+2020/07/09-11:52:12.710 18ff Level-0 table #28: started
+2020/07/09-11:52:12.722 18ff Level-0 table #28: 107109 bytes OK
+2020/07/09-11:52:12.728 18ff Delete type=0 #24

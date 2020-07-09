@@ -1,0 +1,8 @@
+2020/07/09-10:10:10.065 1725 Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/chrome-extension_fjnbnpbmkenffdnngjfgmeleoegfcffe_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/09-10:10:10.065 1725 Recovering log #4
+2020/07/09-10:10:10.066 1725 Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/chrome-extension_fjnbnpbmkenffdnngjfgmeleoegfcffe_0.indexeddb.leveldb/000004.log 
+2020/07/09-10:17:42.637 3cec Level-0 table #8: started
+2020/07/09-10:17:42.637 3cec Level-0 table #8: 0 bytes OK
+2020/07/09-10:17:42.649 3cec Delete type=0 #4
+2020/07/09-10:17:42.649 3cec Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/09-10:17:42.649 3cec Manual compaction at level-1 from (begin) .. (end); will stop at (end)

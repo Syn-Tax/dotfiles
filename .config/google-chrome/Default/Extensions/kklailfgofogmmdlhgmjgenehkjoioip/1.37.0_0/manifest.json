@@ -1,0 +1,31 @@
+{
+   "author": "Chris Gamble",
+   "browser_action": {
+      "default_icon": {
+         "24": "icon24.png",
+         "36": "icon36.png",
+         "48": "icon48.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "Google Meet Grid View"
+   },
+   "content_scripts": [ {
+      "js": [ "browser-polyfill.js", "content.js" ],
+      "matches": [ "https://meet.google.com/*" ],
+      "run_at": "document_idle"
+   } ],
+   "description": "Adds a toggle to use a grid layout in Google Meets",
+   "homepage_url": "https://github.com/Fugiman/google-meet-grid-view",
+   "icons": {
+      "128": "icon128.png",
+      "24": "icon24.png",
+      "36": "icon36.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqIlXcO9viRFa67kuf9E/qx8jhWhDOyz0iJIaaEOa1GVV7kcsfHQTf4IxXqM77X1q4Y5db3U7iGZ8O5rISo6ykVbRlCoN/v1LmP5rURB7pxnVbGGcgRt+W1uEFDHGHNEugsQuoShXILOoAQ79jp2LQ8hIQ4hFfXSvsJ+2iuW2QwLdcOd3iRuXcCv/Vm1ARtCeTh0j11+KFbpYL1cIst0AbnCMYsC+4ifWcTzfRtq7k4Z8ew02VdJ4QCMRVriY1bluuvIYijI/6XupDQGd4lZUA+DzydQAHIgkQ0jcVGS6Q+YN0arIKSgp17ibsSmB9DBklULj2V+ZnUHATgT4D1DtRwIDAQAB",
+   "manifest_version": 2,
+   "name": "Google Meet Grid View",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.37.0",
+   "web_accessible_resources": [ "grid.user.js" ]
+}

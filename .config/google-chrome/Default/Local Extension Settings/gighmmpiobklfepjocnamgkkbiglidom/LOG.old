@@ -1,0 +1,26 @@
+2020/07/09-10:10:10.121 173a Reusing MANIFEST /home/oscar/.config/google-chrome/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/MANIFEST-000001
+2020/07/09-10:10:10.121 173a Recovering log #38
+2020/07/09-10:10:10.121 173a Reusing old log /home/oscar/.config/google-chrome/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/000038.log 
+2020/07/09-10:11:11.357 1f1e Level-0 table #42: started
+2020/07/09-10:11:11.467 1f1e Level-0 table #42: 5368486 bytes OK
+2020/07/09-10:11:11.472 1f1e Delete type=0 #38
+2020/07/09-10:12:13.137 1f1e Level-0 table #44: started
+2020/07/09-10:12:13.246 1f1e Level-0 table #44: 5368578 bytes OK
+2020/07/09-10:12:13.254 1f1e Delete type=0 #41
+2020/07/09-11:11:12.172 1f1e Level-0 table #46: started
+2020/07/09-11:11:12.251 1f1e Level-0 table #46: 5368626 bytes OK
+2020/07/09-11:11:12.257 1f1e Delete type=0 #43
+2020/07/09-11:11:12.259 1f1e Compacting 4@0 + 2@1 files
+2020/07/09-11:11:12.369 1f1e Generated table #47@0: 1 keys, 5368388 bytes
+2020/07/09-11:11:12.374 1f1e Generated table #48@0: 4 keys, 347 bytes
+2020/07/09-11:11:12.374 1f1e Compacted 4@0 + 2@1 files => 5368735 bytes
+2020/07/09-11:11:12.380 1f1e compacted to: files[ 0 2 1 0 0 0 0 ]
+2020/07/09-11:11:12.380 1f1e Delete type=2 #37
+2020/07/09-11:11:12.380 1f1e Delete type=2 #42
+2020/07/09-11:11:12.380 1f1e Delete type=2 #39
+2020/07/09-11:11:12.380 1f1e Delete type=2 #46
+2020/07/09-11:11:12.380 1f1e Delete type=2 #44
+2020/07/09-11:11:12.380 1f1e Delete type=2 #36
+2020/07/09-11:14:43.984 1f1e Level-0 table #50: started
+2020/07/09-11:14:44.070 1f1e Level-0 table #50: 5368388 bytes OK
+2020/07/09-11:14:44.076 1f1e Delete type=0 #45
