@@ -1,0 +1,5 @@
+2020/07/10-09:57:05.836 b8006 Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_081f553a31428b2d0b4556c36e691739.safeframe.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/10-09:57:14.033 880 Level-0 table #5: started
+2020/07/10-09:57:14.038 880 Level-0 table #5: 439 bytes OK
+2020/07/10-09:57:14.048 880 Delete type=0 #3
+2020/07/10-09:57:14.048 880 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

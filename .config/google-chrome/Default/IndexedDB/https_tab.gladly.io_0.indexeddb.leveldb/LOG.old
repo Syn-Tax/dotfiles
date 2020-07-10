@@ -1,15 +1,15 @@
-2020/07/09-11:50:47.994 2908b Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_tab.gladly.io_0.indexeddb.leveldb/MANIFEST-000001
-2020/07/09-11:50:47.994 2908b Recovering log #111
-2020/07/09-11:50:47.994 2908b Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/https_tab.gladly.io_0.indexeddb.leveldb/000111.log 
-2020/07/09-11:50:54.475 3cec Level-0 table #116: started
-2020/07/09-11:50:54.483 3cec Level-0 table #116: 3720 bytes OK
-2020/07/09-11:50:54.489 3cec Delete type=0 #111
-2020/07/09-11:50:54.489 3cec Manual compaction at level-0 from (begin) .. (end); will stop at (end)
-2020/07/09-11:50:54.489 3cec Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00D\x00Z\x00K\x00b\x00k\x003\x00D\x00z\x00J\x00w\x00A\x009\x00n\x00W\x00L\x00l\x00p\x00t\x006\x00h\x00j\x00q\x00h\x00T\x00m\x006\x00W\x00Y\x00-\x00W\x00O\x00n\x00k\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 904 : 1
-2020/07/09-11:50:54.489 3cec Compacting 1@1 + 1@2 files
-2020/07/09-11:50:54.496 3cec Generated table #117@1: 20 keys, 3540 bytes
-2020/07/09-11:50:54.496 3cec Compacted 1@1 + 1@2 files => 3540 bytes
-2020/07/09-11:50:54.501 3cec compacted to: files[ 0 0 1 0 0 0 0 ]
-2020/07/09-11:50:54.501 3cec Delete type=2 #116
-2020/07/09-11:50:54.501 3cec Delete type=2 #113
-2020/07/09-11:50:54.502 3cec Manual compaction at level-1 from '\x00\x01\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00D\x00Z\x00K\x00b\x00k\x003\x00D\x00z\x00J\x00w\x00A\x009\x00n\x00W\x00L\x00l\x00p\x00t\x006\x00h\x00j\x00q\x00h\x00T\x00m\x006\x00W\x00Y\x00-\x00W\x00O\x00n\x00k\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 904 : 1 .. (end); will stop at (end)
+2020/07/10-09:48:52.728 b4e83 Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_tab.gladly.io_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/10-09:48:52.728 b4e83 Recovering log #235
+2020/07/10-09:48:52.729 b4e83 Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/https_tab.gladly.io_0.indexeddb.leveldb/000235.log 
+2020/07/10-09:49:03.555 880 Level-0 table #240: started
+2020/07/10-09:49:03.565 880 Level-0 table #240: 3685 bytes OK
+2020/07/10-09:49:03.571 880 Delete type=0 #235
+2020/07/10-09:49:03.571 880 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/10-09:49:03.571 880 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00D\x00Z\x00K\x00b\x00k\x003\x00D\x00z\x00J\x00w\x00A\x009\x00n\x00W\x00L\x00l\x00p\x00t\x006\x00h\x00j\x00q\x00h\x00T\x00m\x006\x00W\x00Y\x00-\x00W\x00O\x00n\x00k\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 1699 : 1
+2020/07/10-09:49:03.571 880 Compacting 1@1 + 1@2 files
+2020/07/10-09:49:03.576 880 Generated table #241@1: 20 keys, 3124 bytes
+2020/07/10-09:49:03.576 880 Compacted 1@1 + 1@2 files => 3124 bytes
+2020/07/10-09:49:03.582 880 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/10-09:49:03.582 880 Delete type=2 #237
+2020/07/10-09:49:03.582 880 Delete type=2 #240
+2020/07/10-09:49:03.583 880 Manual compaction at level-1 from '\x00\x01\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00D\x00Z\x00K\x00b\x00k\x003\x00D\x00z\x00J\x00w\x00A\x009\x00n\x00W\x00L\x00l\x00p\x00t\x006\x00h\x00j\x00q\x00h\x00T\x00m\x006\x00W\x00Y\x00-\x00W\x00O\x00n\x00k\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 1699 : 1 .. (end); will stop at (end)

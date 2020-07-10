@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kognity//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+SUMMARY:Kognity assignment deadline - Assignment 2020-05-10
+DTSTART:20200518T070000Z
+DTEND:20200518T080000Z
+DTSTAMP:20200510T194607Z
+UID:assignments-665064@kognity.com
+CREATED:20200510T194607Z
+DESCRIPTION:Remember to submit this assignment by 2020-05-18 09:00\n\nStar
+ t the assignment now: https://app.kognity.com/study/assignment/start/66506
+ 4/redirect/?source=email?source=calendar
+LAST-MODIFIED:20200510T194607Z
+LOCATION:St Leonards School
+ORGANIZER;CN="Oscar Morris":mailto:o.morris@stleonards-fife.org
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

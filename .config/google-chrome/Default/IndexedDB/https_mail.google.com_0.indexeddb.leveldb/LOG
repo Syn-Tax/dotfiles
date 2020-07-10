@@ -1,0 +1,15 @@
+2020/07/10-09:21:36.147 a8776 Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/10-09:21:36.147 a8776 Recovering log #31
+2020/07/10-09:21:36.147 a8776 Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000031.log 
+2020/07/10-09:22:29.246 880 Level-0 table #36: started
+2020/07/10-09:22:29.262 880 Level-0 table #36: 282189 bytes OK
+2020/07/10-09:22:29.269 880 Delete type=0 #31
+2020/07/10-09:22:29.270 880 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/10-09:22:29.271 880 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x08\x01\x02\x019\x00S\x00t\x00o\x00r\x00e\x00d\x00C\x00a\x00c\x00h\x00e\x00H\x00i\x00t\x00C\x00o\x00u\x00n\x00t\x00e\x00r\x00s\x00:\x00:\x00h\x00t\x00t\x00p\x00s\x00:\x00/\x00/\x00m\x00a\x00i\x00l\x00.\x00g\x00o\x00o\x00g\x00l\x00e\x00.\x00c\x00o\x00m\x00/\x00m\x00a\x00i\x00l\x00/\x00u\x00/\x001\x00/' @ 7583 : 1
+2020/07/10-09:22:29.271 880 Compacting 1@1 + 1@2 files
+2020/07/10-09:22:29.291 880 Generated table #37@1: 217 keys, 226320 bytes
+2020/07/10-09:22:29.291 880 Compacted 1@1 + 1@2 files => 226320 bytes
+2020/07/10-09:22:29.296 880 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/07/10-09:22:29.297 880 Delete type=2 #33
+2020/07/10-09:22:29.297 880 Delete type=2 #36
+2020/07/10-09:22:29.297 880 Manual compaction at level-1 from '\x00\x08\x01\x02\x019\x00S\x00t\x00o\x00r\x00e\x00d\x00C\x00a\x00c\x00h\x00e\x00H\x00i\x00t\x00C\x00o\x00u\x00n\x00t\x00e\x00r\x00s\x00:\x00:\x00h\x00t\x00t\x00p\x00s\x00:\x00/\x00/\x00m\x00a\x00i\x00l\x00.\x00g\x00o\x00o\x00g\x00l\x00e\x00.\x00c\x00o\x00m\x00/\x00m\x00a\x00i\x00l\x00/\x00u\x00/\x001\x00/' @ 7583 : 1 .. (end); will stop at (end)

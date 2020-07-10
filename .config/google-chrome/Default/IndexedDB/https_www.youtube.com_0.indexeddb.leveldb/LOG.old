@@ -1,3 +1,8 @@
-2020/07/09-10:10:15.507 1725 Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/07/09-10:10:15.507 1725 Recovering log #3
-2020/07/09-10:10:15.508 1725 Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
+2020/07/10-08:16:10.824 8f9bf Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/10-08:16:10.824 8f9bf Recovering log #19
+2020/07/10-08:16:10.825 8f9bf Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000019.log 
+2020/07/10-08:36:44.500 880 Level-0 table #23: started
+2020/07/10-08:36:44.501 880 Level-0 table #23: 0 bytes OK
+2020/07/10-08:36:44.514 880 Delete type=0 #19
+2020/07/10-08:36:44.514 880 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/10-08:36:44.514 880 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

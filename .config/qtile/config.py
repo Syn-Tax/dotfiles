@@ -233,51 +233,76 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 0
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                        text=u'\uE0B2',
                         background = colors[0],
-                        foreground = colors[5],
+                        foreground = colors[4],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         
                         ),
                widget.TextBox(
                         text=" CPU:",
                         foreground=colors[2],
-                        background=colors[5],
+                        background=colors[4],
                         padding = 0,
                         fontsize=14
                         ),
                widget.CPU(
                         foreground = colors[2],
-                        background = colors[5],
+                        background = colors[4],
                         padding = 5,
                         format = "{load_percent}%"
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
-                        background = colors[5],
-                        foreground = colors[4],
+                        text=u'\uE0B2',
+                        background = colors[4],
+                        foreground = colors[5],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         ),
                widget.TextBox(
                         text=" MEM:",
                         foreground=colors[2],
-                        background=colors[4],
+                        background=colors[5],
                         padding = 0,
                         fontsize=14
                         ),
                widget.Memory(
                         foreground = colors[2],
-                        background = colors[4],
+                        background = colors[5],
                         padding = 5
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                       text=u'\uE0B2',
+                       background = colors[5],
+                       foreground = colors[4],
+                       padding=0,
+                       fontsize=20
+                       ),
+               widget.TextBox(
+                        text=" ⟳",
+                        padding = 2,
+                        foreground=colors[2],
+                        background=colors[4],
+                        fontsize=14
+                        ),
+               widget.Pacman(
+                        update_interval = 1800,
+                        foreground = colors[2],
+                        background = colors[4]
+                        ),
+               widget.TextBox(
+                        text="Updates",
+                        padding = 5,
+                        foreground=colors[2],
+                        background=colors[4]
+                        ),
+               widget.TextBox(
+                        text=u'\uE0B2',
                         background = colors[4],
                         foreground = colors[5],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         ),
                widget.TextBox(
                        text=" VOL:",
@@ -291,11 +316,11 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 5
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                        text=u'\uE0B2',
                         background = colors[5],
                         foreground = colors[4],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         ),
                widget.CurrentLayoutIcon(
                         custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
@@ -310,7 +335,7 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 5
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                        text=u'\uE0B2',
                         background = colors[4],
                         foreground = colors[5],
                         padding=0,
@@ -375,11 +400,11 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 0
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                        text=u'\uE0B2',
                         background = colors[0],
                         foreground = colors[5],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         ),
                widget.TextBox(
                        text=" VOL:",
@@ -393,11 +418,11 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 5
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                        text=u'\uE0B2',
                         background = colors[5],
                         foreground = colors[4],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         ),
                widget.CurrentLayoutIcon(
                         custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
@@ -412,11 +437,11 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 5
                         ),
                widget.TextBox(
-                        text=u'\uE0B6',
+                        text=u'\uE0B2',
                         background = colors[4],
                         foreground = colors[5],
                         padding=0,
-                        fontsize=19
+                        fontsize=20
                         ),
                widget.Clock(
                         foreground = colors[2],
