@@ -1,8 +1,0 @@
-2020/07/09-19:20:43.158 6fadf Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_delivery.adrecover.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/07/09-19:20:43.158 6fadf Recovering log #13
-2020/07/09-19:20:43.158 6fadf Reusing old log /home/oscar/.config/google-chrome/Default/IndexedDB/https_delivery.adrecover.com_0.indexeddb.leveldb/000013.log 
-2020/07/09-19:20:51.998 880 Level-0 table #17: started
-2020/07/09-19:20:51.998 880 Level-0 table #17: 0 bytes OK
-2020/07/09-19:20:52.007 880 Delete type=0 #13
-2020/07/09-19:20:52.007 880 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
-2020/07/09-19:20:52.007 880 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

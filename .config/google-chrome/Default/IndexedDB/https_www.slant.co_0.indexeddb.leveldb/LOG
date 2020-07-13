@@ -1,5 +1,0 @@
-2020/07/10-09:57:03.621 b47fd Reusing MANIFEST /home/oscar/.config/google-chrome/Default/IndexedDB/https_www.slant.co_0.indexeddb.leveldb/MANIFEST-000001
-2020/07/10-09:57:07.875 880 Level-0 table #5: started
-2020/07/10-09:57:07.879 880 Level-0 table #5: 355 bytes OK
-2020/07/10-09:57:07.890 880 Delete type=0 #3
-2020/07/10-09:57:07.890 880 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
