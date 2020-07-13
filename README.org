@@ -1,0 +1,2 @@
+* My dotfiles
+These are my dotfiles mostly for moving between systems or reinstalling linux as I have done many times
