@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+
+import os
+import datetime
+
+title = input("Episode Title: ")
+description = input("Description: ")
+num = input("Episode Number: ")
+
+length = input("File Size (bytes): ")
+duration = input("Duration (seconds): ")
+article = input("Article Link: ")
+input_path = input("RSS path: ")
+explicit = input("Explicit: ")
+
+if input_path.startswith("/"):
+    path = input_path
+else:
+    path = "{}/{}".format(os.getcwd(), input_path)
+
+weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]
+now = datetime.datetime.today()
+pub_date = "{}, {} {} {} 00:00:00 +0000".format(weekdays[now.weekday()], now.day, months[now.month-1], now.year)
+
+full_description = '<![CDATA[<p>{0}<br><br>Shownotes:<br><a href="{1}">{1}</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord <a href="https://discord.gg/EveXnwS">https://discord.gg/EvXnwS</a></p>]]>'.format(description, article)
+item = '<item>\n<itunes:title>{0}</itunes:title>\n<title>{0}</title>\n<description>{1}</description>\n<content:encoded>{1}</content:encoded>\n<itunes:author>Oscar</itunes:author>\n<enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode{2}.mp3" length="{3}" type="audo/mpeg" />\n<guid>wtfwikipedia.com/podcast/episode{2}.mp3<guid>\n<pubDate>{4}</pubDate>\n<itunes:duration>{5}</itunes:duration>\n<itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>\n<itunes:episode>{2}<itunes:episode>\n<itunes:episodeType>full</itunes:episodeType>\n<itunes:explicit>{6}<itunes:explicit\n</item>'.format(title, full_description, num, length, pub_date, duration, explicit)
+
+with open(path, "r") as f:
+    file = f.read().split("\n")
+    print(file)
+file.insert(50, item)
+output = ""
+for line in file:
+    output += "{}\n".format(line)
+print(output)
+
+with open(path, "w") as f:
+    f.write(output)
+    print("wrote output")

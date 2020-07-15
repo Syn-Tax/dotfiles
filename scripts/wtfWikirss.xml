@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+
+<!-- TEMPLATE 
+<item>
+    <itunes:title> TITLE </itunes:title>
+    <title> TITLE </title>
+    <description><![CDATA[ DESCRIPTION HTML ]]></description>
+    <content:encoded><![CDATA[ DESCRIPTION HTML ]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary> SUMMARY</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode.mp3" length=" FILE SIZE" type="audio/mpeg" />
+    <guid> URL </guid>
+    <pubDate>Sun, DATE 00:00:00 +0000</pubDate>
+    <itunes:duration> DURATION </itunes:duration>
+    <itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+    <itunes:episode> EPISODE NUM </itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+
+-->
+
+<channel>
+  <atom:link href="http://wtfwikipedia.com/wtfWikirss.xml" rel="self" type="application/rss+xml" />
+  <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" xmlns="http://www.w3.org/2005/Atom" />
+  <title>WTF Wikipedia</title>
+  <lastBuildDate>Sun, 12 Apr 2020 01:44:01 -0400</lastBuildDate>
+  <link>http://wtfwikipedia.com</link>
+  <language>en-gb</language>
+  <copyright>&#x2117; &amp; © 2020 WTF Wikipedia</copyright>
+  <itunes:subtitle><![CDATA[Every episode Oscar and James discuss a random Wikipedia article, and maybe poke fun at it]]></itunes:subtitle>
+  <itunes:author>Oscar</itunes:author>
+  <itunes:summary><![CDATA[Every episode Oscar and James discuss a random Wikipedia article, and maybe poke fun at it]]></itunes:summary>
+  <itunes:type>episodic</itunes:type>
+  <itunes:explicit>false</itunes:explicit>
+  <description><![CDATA[Every episode Oscar and James discuss a random Wikipedia article, and maybe poke fun at it]]></description>
+  <itunes:keywords>wikipedia, wtf, comedy, education</itunes:keywords>
+  <itunes:owner>
+    <itunes:name>Oscar</itunes:name>
+    <itunes:email>twocap06@gmail.com</itunes:email>
+  </itunes:owner>
+  <image>
+     <url>https://wtfwikipedia.com/Logo.png</url>
+     <title>WTF Wikipedia</title>
+     <link>http://wtfwikipedia.com</link>
+  </image>
+  <itunes:image href="https://wtfwikipedia.com/Logo.png" />
+  <itunes:category text="Comedy" />
+  <itunes:category text="Education" />
+<item>
+<itunes:title>TITle</itunes:title>
+<title>TITle</title>
+<description><![CDATA[<p>DESC<br><br>Shownotes:<br><a href="example.com">example.com</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord <a href="https://discord.gg/EveXnwS">https://discord.gg/EvXnwS</a></p>]]></description>
+<content:encoded><![CDATA[<p>DESC<br><br>Shownotes:<br><a href="example.com">example.com</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord <a href="https://discord.gg/EveXnwS">https://discord.gg/EvXnwS</a></p>]]></content:encoded>
+<itunes:author>Oscar</itunes:author>
+<enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode15.mp3" length="150558" type="audo/mpeg" />
+<guid>wtfwikipedia.com/podcast/episode15.mp3<guid>
+<pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+<itunes:duration>998</itunes:duration>
+<itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+<itunes:episode>15<itunes:episode>
+<itunes:episodeType>full</itunes:episodeType>
+<itunes:explicit>falso<itunes:explicit
+</item>
+<item>
+<itunes:title>TITLe</itunes:title>
+<title>TITLe</title>
+<description><![CDATA[<p>DESC<br><br>Shownotes:<br><a href="example.com">example.com</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord <a href="https://discord.gg/EveXnwS">https://discord.gg/EvXnwS</a></description>
+<content:encoded><![CDATA[<p>DESC<br><br>Shownotes:<br><a href="example.com">example.com</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord <a href="https://discord.gg/EveXnwS">https://discord.gg/EvXnwS</a></content:encoded>
+<itunes:author>Oscar</itunes:author>
+<enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode999.mp3" length="989" type="audo/mpeg" />
+<guid>wtfwikipedia.com/podcast/episode999.mp3<guid>
+<pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+<itunes:duration>979</itunes:duration>
+<itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+<itunes:episode>999<itunes:episode>
+<itunes:episodeType>full</itunes:episodeType>
+<itunes:explicit>false<itunes:explicit
+</item>
+  <item>
+    <itunes:title>The Ryugyong Hotel, an episode out of time - Episode 12</itunes:title>
+    <title>The Ryugyong Hotel, an episode out of time - Episode 12</title>
+    <description><![CDATA[<p>Oscar and James discuss an abandoned hotel and James finds some money<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Ryugyong_Hotel">https://www.wikiwand.com/en/Ryugyong_Hotel</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord, <a href="https://discord.gg/EveXnwS">https://discord.gg/EveXnwS</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>Oscar and James discuss an abandoned hotel and James finds some money<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Ryugyong_Hotel">https://www.wikiwand.com/en/Ryugyong_Hotel</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord, <a href="https://discord.gg/EveXnwS">https://discord.gg/EveXnwS</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode12.mp3" length="15435095" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode12.mp3</guid>
+    <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>965</itunes:duration>
+    <itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+    <itunes:episode>12</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item> 
+  <item>
+    <itunes:title>Lonely trees and Hawaii - Episode 11</itunes:title>
+    <title>Lonely trees and Hawaii - Episode 11</title>
+    <description><![CDATA[<p>Oscar and James discuss the loneliest tree in the world and a tree in Hawaii<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Tree_of_T%C3%A9n%C3%A9r%C3%A9">https://www.wikiwand.com/en/Tree_of_T%C3%A9n%C3%A9r%C3%A9</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord, <a href="https://discord.gg/EveXnwS">https://discord.gg/EveXnwS</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>Oscar and James discuss the loneliest tree in the world and a tree in Hawaii<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Tree_of_T%C3%A9n%C3%A9r%C3%A9">https://www.wikiwand.com/en/Tree_of_T%C3%A9n%C3%A9r%C3%A9</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord, <a href="https://discord.gg/EveXnwS">https://discord.gg/EveXnwS</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode11.mp3" length="17450146" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode11.mp3</guid>
+    <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>1117</itunes:duration>
+    <itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+    <itunes:episode>11</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch - Episode 10</itunes:title>
+    <title>Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch - Episode 10</title>
+    <description><![CDATA[<p>Oscar and James discuss the Welsh village of llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch. Try saying that 10 times in a row.<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Llanfairpwllgwyngyll">https://www.wikiwand.com/en/Llanfairpwllgwyngyll</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord, <a href="https://discord.gg/EveXnwS">https://discord.gg/EveXnwS</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>Oscar and James discuss the Welsh village of llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch. Try saying that 10 times in a row.<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Llanfairpwllgwyngyll">https://www.wikiwand.com/en/Llanfairpwllgwyngyll</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Join our Discord, <a href="https://discord.gg/EveXnwS">https://discord.gg/EveXnwS</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>Oscar and James discuss the Welsh village of llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch. Try saying that 10 times in a row.Shownotes:https://www.wikiwand.com/en/LlanfairpwllgwyngyllOur Website: https://wtfwikipedia.comFollow us on...</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode10.mp3" length="13833471" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode10.mp3</guid>
+    <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>866</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>10</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>Nazi UFOs and rearranging Oscar&#39;s setup - Episode 9</itunes:title>
+    <title>Nazi UFOs and rearranging Oscar&#39;s setup - Episode 9</title>
+    <description><![CDATA[<p>In this episode, Oscar and James discuss Nazi UFOs and Oscar decides this is a good time to rearrange his setup.<br><br>Show Notes:<br><a href="https://www.wikiwand.com/en/Nazi_UFOs">https://www.wikiwand.com/en/Nazi_UFOs</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>In this episode, Oscar and James discuss Nazi UFOs and Oscar decides this is a good time to rearrange his setup.<br><br>Show Notes:<br><a href="https://www.wikiwand.com/en/Nazi_UFOs">https://www.wikiwand.com/en/Nazi_UFOs</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>In this episode, Oscar and James discuss Nazi UFOs and Oscar decides this is a good time to rearrange his setup.Show Notes:https://www.wikiwand.com/en/Nazi_UFOs</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode9.mp3" length="12349888" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode9.mp3</guid>
+    <pubDate>Sun, 08 Mar 2020 13:00:00 +0000</pubDate>
+    <itunes:duration>829</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>9</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>true</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>Thomas Midgely Jr. and staying on topic - Episode 8</itunes:title>
+    <title>Thomas Midgely Jr. and staying on topic - Episode 8</title>
+    <description><![CDATA[<p>This episode Oscar and James discuss the eventful life of Thomas Midgely Jr. and stay surprisingly on topic.<br><br>Websites/Show Notes:<br><a href="https://www.wikiwand.com/en/Thomas_Midgley_Jr.">https://www.wikiwand.com/en/Thomas_Midgley_Jr.</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>This episode Oscar and James discuss the eventful life of Thomas Midgely Jr. and stay surprisingly on topic.<br><br>Websites/Show Notes:<br><a href="https://www.wikiwand.com/en/Thomas_Midgley_Jr.">https://www.wikiwand.com/en/Thomas_Midgley_Jr.</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>This episode Oscar and James discuss the eventful life of Thomas Midgely Jr. and stay surprisingly on topic.Websites/Show Notes:https://www.wikiwand.com/en/Thomas_Midgley_Jr.</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode8.mp3" length="14814610" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode8.mp3</guid>
+    <pubDate>Sun, 01 Mar 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>851</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>8</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>Ruth Bellville and the Time Ball - Episode 7</itunes:title>
+    <title>Ruth Bellville and the Time Ball - Episode 7</title>
+    <description><![CDATA[<p>In this Episode, Oscar and James discuss Ruth Bellville and the time ball at the royal Greenwich observatory.<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Ruth_Belville">https://www.wikiwand.com/en/Ruth_Belville</a><br><a href="https://www.wikiwand.com/en/Royal_Observatory,_Greenwich">https://www.wikiwand.com/en/Royal_Observatory,_Greenwich</a><br><a href="https://www.wikiwand.com/en/Time_ball">https://www.wikiwand.com/en/Time_ball</a><br><br>Visit our website at https://wtfwikipedia.com<br>Follow us on Instagram @wtfwikipedia<br>Support Us on Patreon&nbsp;<a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a>, then James might be able to get a new microphone.</p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>In this Episode, Oscar and James discuss Ruth Bellville and the time ball at the royal Greenwich observatory.<br><br>Shownotes:<br><a href="https://www.wikiwand.com/en/Ruth_Belville">https://www.wikiwand.com/en/Ruth_Belville</a><br><a href="https://www.wikiwand.com/en/Royal_Observatory,_Greenwich">https://www.wikiwand.com/en/Royal_Observatory,_Greenwich</a><br><a href="https://www.wikiwand.com/en/Time_ball">https://www.wikiwand.com/en/Time_ball</a><br><br>Visit our website at https://wtfwikipedia.com<br>Follow us on Instagram @wtfwikipedia<br>Support Us on Patreon&nbsp;<a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a>, then James might be able to get a new microphone.</p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>In this Episode, Oscar and James discuss Ruth Bellville and the time ball at the royal Greenwich...</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode7.mp3" length="14377494" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode7.mp3</guid>
+    <pubDate>Mon, 17 Feb 2020 18:00:00 +0000</pubDate>
+    <itunes:duration>824</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>7</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>The Indiana Pi Bill and Notable Cranks - Episode 6</itunes:title>
+    <title>The Indiana Pi Bill and Notable Cranks - Episode 6</title>
+    <description><![CDATA[<p>In this episode, Oscar and James discuss the Indiana pi bill and some notable cranks.<br><br>Websites/Show Notes:<br><a href="https://www.wikiwand.com/en/Indiana_Pi_Bill#">https://www.wikiwand.com/en/Indiana_Pi_Bill</a><br><a href="https://www.wikiwand.com/en/List_of_notable_cranks">https://www.wikiwand.com/en/List_of_notable_cranks</a><br><br>Our Website <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Support us on Patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>In this episode, Oscar and James discuss the Indiana pi bill and some notable cranks.<br><br>Websites/Show Notes:<br><a href="https://www.wikiwand.com/en/Indiana_Pi_Bill#">https://www.wikiwand.com/en/Indiana_Pi_Bill</a><br><a href="https://www.wikiwand.com/en/List_of_notable_cranks">https://www.wikiwand.com/en/List_of_notable_cranks</a><br><br>Our Website <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Support us on Patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>In this episode, Oscar and James discuss the Indiana pi bill and some notable cranks.Websites/Show Notes:https://www.wikiwand.com/en/Indiana_Pi_Billhttps://www.wikiwand.com/en/List_of_notable_cranksOur Website https://wtfwikipedia.comFollow us on Instag...</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode6.mp3" length="15551917" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode6.mp3</guid>
+    <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>891</itunes:duration>
+    <itunes:keywords></itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>6</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>The Dancing plague and laughter epidemics - Episode 5</itunes:title>
+    <title>The Dancing plague and laughter epidemics - Episode 5</title>
+    <description><![CDATA[<p>In this Episode, Oscar and James discuss the Strasbourg Dancing plague and laughter epidemics in African schools.<br><br>Links/Shownotes:<br><a href="https://www.wikiwand.com/en/Dancing_plague_of_1518">https://www.wikiwand.com/en/Dancing_plague_of_1518</a><br><a href="https://www.wikiwand.com/en/Tanganyika_laughter_epidemic">https://www.wikiwand.com/en/Tanganyika_laughter_epidemic</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Support us on Patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>In this Episode, Oscar and James discuss the Strasbourg Dancing plague and laughter epidemics in African schools.<br><br>Links/Shownotes:<br><a href="https://www.wikiwand.com/en/Dancing_plague_of_1518">https://www.wikiwand.com/en/Dancing_plague_of_1518</a><br><a href="https://www.wikiwand.com/en/Tanganyika_laughter_epidemic">https://www.wikiwand.com/en/Tanganyika_laughter_epidemic</a><br><br>Our Website: <a href="https://wtfwikipedia.com">https://wtfwikipedia.com</a><br>Follow us on Instagram @wtfwikipedia<br>Support us on Patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>We discuss the dancing plague and laughter epidemics</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode5.mp3" length="15708836" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode5.mp3</guid>
+    <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>902</itunes:duration>
+    <itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>5</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>Illegal primes and the Streisand effect - Episode 4</itunes:title>
+    <title>Illegal primes and the Streisand effect - Episode 4</title>
+    <description><![CDATA[<p>In this episode, James and Oscar discuss illegal prime numbers and stay surprisingly on topic when talking about the Streisand effect.<br><br>Show Notes/websites:<br><a href="https://www.wikiwand.com/en/Illegal_prime">https://www.wikiwand.com/en/Illegal_prime</a><br><a href="https://www.wikiwand.com/en/Illegal_number">https://www.wikiwand.com/en/Illegal_number</a><br><a href="https://www.wikiwand.com/en/Streisand_effect">https://www.wikiwand.com/en/Streisand_effect</a><br><br>Visit our website at <a href="https://www.wtfwikipedia.com/">https://www.wtfwikipedia.com</a><br>Join our discord server at <a href="https://discord.gg/XeEfps">https://discord.gg/XeEfps</a><br>Support us on patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a><br><br><br></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>In this episode, James and Oscar discuss illegal prime numbers and stay surprisingly on topic when talking about the Streisand effect.<br><br>Show Notes/websites:<br><a href="https://www.wikiwand.com/en/Illegal_prime">https://www.wikiwand.com/en/Illegal_prime</a><br><a href="https://www.wikiwand.com/en/Illegal_number">https://www.wikiwand.com/en/Illegal_number</a><br><a href="https://www.wikiwand.com/en/Streisand_effect">https://www.wikiwand.com/en/Streisand_effect</a><br><br>Visit our website at <a href="https://www.wtfwikipedia.com/">https://www.wtfwikipedia.com</a><br>Join our discord server at <a href="https://discord.gg/XeEfps">https://discord.gg/XeEfps</a><br>Support us on patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a><br><br><br></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>We discuss some numbers</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode4.mp3" length="13191802" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode4.mp3</guid>
+    <pubDate>Sun, 26 Jan 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>778</itunes:duration>
+    <itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>4</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+  <item>
+    <itunes:title>The London beer and the Boston Molassacre - Episode 3</itunes:title>
+    <title>The London beer and the Boston Molassacre - Episode 3</title>
+    <description><![CDATA[<p>In this episode, we discuss the London beer flood and the Great molasses flood.<br><br>Show notes/websites:<br><a href="https://www.wikiwand.com/en/London_Beer_Flood">https://www.wikiwand.com/en/London_Beer_Flood</a><br><a href="https://www.wikiwand.com/en/Great_Molasses_Flood">https://www.wikiwand.com/en/Great_Molasses_Flood</a><br><br>Visit our website at <a href="https://www.wtfwikipedia.com/">https://www.wtfwikipedia.com</a><br>Join our discord server at <a href="https://discord.gg/XeEfps">https://discord.gg/XeEfps</a><br>Support us on patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></description>
+    <content:encoded><![CDATA[<p>In this episode, we discuss the London beer flood and the Great molasses flood.<br><br>Show notes/websites:<br><a href="https://www.wikiwand.com/en/London_Beer_Flood">https://www.wikiwand.com/en/London_Beer_Flood</a><br><a href="https://www.wikiwand.com/en/Great_Molasses_Flood">https://www.wikiwand.com/en/Great_Molasses_Flood</a><br><br>Visit our website at <a href="https://www.wtfwikipedia.com/">https://www.wtfwikipedia.com</a><br>Join our discord server at <a href="https://discord.gg/XeEfps">https://discord.gg/XeEfps</a><br>Support us on patreon at <a href="https://www.patreon.com/wtfwikipedia">https://www.patreon.com/wtfwikipedia</a></p><p><a rel="payment" href="https://www.patreon.com/wtfwikipedia">Support the show</a> (https://www.patreon.com/wtfwikipedia)</p>]]></content:encoded>
+    <itunes:author>Oscar</itunes:author>
+    <itunes:summary>We discuss strange liquid floods</itunes:summary>
+    <enclosure url="https://chtbl.com/track/94A12A/wtfwikipedia.com/podcast/episode3.mp3" length="12895886" type="audio/mpeg" />
+    <guid>wtfwikipedia.com/podcast/episode3.mp3</guid>
+    <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+    <itunes:duration>746</itunes:duration>
+    <itunes:keywords>Random facts, facts, wikipedia, wtf</itunes:keywords>
+    <itunes:season></itunes:season>
+    <itunes:episode>3</itunes:episode>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:explicit>false</itunes:explicit>
+  </item>
+</channel>
+</rss>
+
+
