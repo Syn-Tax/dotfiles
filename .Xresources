@@ -2,10 +2,10 @@
 ! Generated with :
 ! XRDB2Xreources.py
 !
-*.transparent: true
-*.shading: 15
+!*.transparent: true
+!*.shading: 15
 *.foreground:  #e5e5e5
-*.background:  #232322
+*.background:  #000000
 *.cursorColor: #16afca
 !
 ! Black
@@ -53,3 +53,5 @@ URxvt.internalBorder: 10
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
+
+

@@ -22,7 +22,7 @@
 
 # TUI:
 al
-q0
+q1
 v2
 ov
 m-1
@@ -32,7 +32,70 @@ r2
 # Left window history (oldest to newest):
 d/home/oscar
 	Extra-storage
+2
+d/home/oscar/Extra-storage
+	..
+0
+d/home/oscar
+	Downloads
 1
+d/home/oscar/Downloads
+	..
+0
+d/home/oscar
+	Maildir
+4
+d/home/oscar/Maildir
+	acc1-gmail
+1
+d/home/oscar/Maildir/acc1-gmail
+	INBOX
+1
+d/home/oscar/Maildir/acc1-gmail/INBOX
+	new
+2
+d/home/oscar/Maildir/acc1-gmail/INBOX/new
+	..
+0
+d/home/oscar/Maildir/acc1-gmail/INBOX
+	..
+0
+d/home/oscar/Maildir/acc1-gmail
+	..
+0
+d/home/oscar/Maildir
+	..
+0
+d/home/oscar
+	dotfiles
+5
+d/home/oscar/dotfiles
+	..
+0
+d/home/oscar
+	dotfiles
+5
+d/home
+	oscar
+1
+d/
+	home
+4
+d/home
+	oscar
+1
+d/home/oscar
+	dotfiles
+5
+d/home/oscar/dotfiles
+	..
+0
+d/home/oscar
+	wallpapers
+8
+d/home/oscar/wallpapers
+	0014.jpg
+14
 d
 
 # Right window history (oldest to newest):
