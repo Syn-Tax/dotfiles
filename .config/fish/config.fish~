@@ -16,5 +16,3 @@ abbr p "sudo pacmman"
 abbr pi "sudo pacman -S"
 abbr pu "sudo pacman -Syu"
 abbr SS "sudo systemctl"
-
-set PATH /home/oscar/scripts $PATH

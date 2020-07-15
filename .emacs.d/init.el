@@ -85,6 +85,10 @@
    "RET" 'helm-bookmarks
    "s" 'save-buffer
    "." 'helm-find-files
+   "h" 'windmove-up
+   "t" 'windmove-down
+   "n" 'windmove-right
+   "d" 'windmove-left
 
    ; buffer commands
    "b b" 'switch-to-buffer
@@ -196,19 +200,6 @@
 (define-key evil-normal-state-map "t" 'evil-next-line)
 (define-key evil-normal-state-map "d" 'evil-backward-char)
 (define-key evil-normal-state-map "n" 'evil-forward-char)
-
-; evil keybinds for dvorak (dired)
-;(use-package dired
-;  :config
-;  (evil-define-key 'normal dired-mode-map "h" 'dired-previous-line)
-;  (evil-define-key 'normal dired-mode-map "t" 'dired-next-line)
-;  (evil-define-key 'normal dired-mode-map "n" 'dired-open-file)
-;  (evil-define-key 'normal dired-mode-map "d" 'dired-up-directory))
-
-;(use-package mu4e
-;  :config
-;  (evil-define-key 'normal mu4e-headers-mode-map "h" 'prev-line)
-;  (evil-define-key 'normal mu4e-headers-mode-map "t" 'next-line))
 
 ; transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
