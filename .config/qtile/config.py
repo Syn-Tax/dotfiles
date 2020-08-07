@@ -86,11 +86,9 @@ keys = [
         desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
-    # Run dmenu
-    Key([mod], "e", lazy.spawn("dmenu_run"), desc="Run Dmenu"),
-
-    # Run Emacs
-    Key([mod], "o", lazy.spawn("emacs"), desc="Run doom emacs"),
+    # Run dmenu/dmenu scripts
+    Key([mod], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
+    Key([mod], "g", lazy.spawn("/home/oscar/scripts/bookmenu")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -104,65 +102,61 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
 ]
 
- 
-class WeatherWidget(widget.TextBox):
-  
-    def _configure(self, qtile, bar):
-        widget.TextBox._configure(self, qtile, bar)
-        self.update()
-        self.timeout_add(300, self.update)
- 
-    def update(self):
-        url = "https://api.climacell.co/v3/weather/realtime"
+def weather():
+    url = "https://api.climacell.co/v3/weather/realtime"
 
-        querystring = {"lat":"56.462","lon":"-2.9707","unit_system":"si","fields":"wind_speed:knots,wind_gust:knots,wind_direction","apikey":"SK6KWrtF7LufrgajNY4AN2mjs4xUkotF"}
+    querystring = {"lat":"56.434","lon":"-2.943","unit_system":"si","fields":"wind_speed:knots,wind_gust:knots,wind_direction","apikey":"SK6KWrtF7LufrgajNY4AN2mjs4xUkotF"}
 
-        response = requests.request("GET", url, params=querystring)
-        
-        if response.status_code == requests.codes.ok:
-            data = response.json()
-            wind_direction = data["wind_direction"]["value"]
-            wind_speed_kts = data["wind_speed"]["value"]
-            wind_gust = data["wind_gust"]["value"]
+    response = requests.request("GET", url, params=querystring)
+      
+    if response.status_code == requests.codes.ok:
+        data = response.json()
+        wind_direction = data["wind_direction"]["value"]
+        wind_speed_kts = data["wind_speed"]["value"]
+        wind_gust = data["wind_gust"]["value"]
             
-            bff = 0
+        bff = 0
 
-            if wind_speed_kts > 1:
-                bff = 1
-            if wind_speed_kts > 4:
-                bff = 2
-            if wind_speed_kts > 7:
-                bff = 3
-            if wind_speed_kts > 11:
-                bff = 4
-            if wind_speed_kts > 17:
-                bff = 5
-            if wind_speed_kts > 22:
-                bff = 6
-            if wind_speed_kts > 28:
-                bff = 7
-            if wind_speed_kts > 34:
-                bff = 8
-            if wind_speed_kts > 41:
-                bff = 9
-            if wind_speed_kts > 48:
-                bff = 10
-            if wind_speed_kts > 56:
-                bff = 11
-            if wind_speed_kts > 64:
-                bff = 12
+        if wind_speed_kts > 1:
+            bff = 1
+        if wind_speed_kts > 4:
+            bff = 2
+        if wind_speed_kts > 7:
+            bff = 3
+        if wind_speed_kts > 11:
+            bff = 4
+        if wind_speed_kts > 17:
+            bff = 5
+        if wind_speed_kts > 22:
+            bff = 6
+        if wind_speed_kts > 28:
+            bff = 7
+        if wind_speed_kts > 34:
+            bff = 8
+        if wind_speed_kts > 41:
+            bff = 9
+        if wind_speed_kts > 48:
+            bff = 10
+        if wind_speed_kts > 56:
+            bff = 11
+        if wind_speed_kts > 64:
+            bff = 12
 
         
-        wind_speed_kts = int(wind_speed_kts)
-        wind_gust = int(wind_gust)
+    wind_speed_kts = int(wind_speed_kts)
+    wind_gust = int(wind_gust)
+    if wind_speed_kts < 10:
+        wind_speed_kts = "0{}".format(wind_speed_kts)
+    if wind_gust < 10:
+        wind_gust = "0{}".format(wind_gust)
 
-        if wind_speed_kts < 10:
-            wind_speed_kts = "0{}".format(wind_speed_kts)
-        if wind_gust < 10:
-            wind_gust = "0{}".format(wind_gust)
+    if wind_direction < 10:
+        wind_direction = "00{}".format(wind_direction)
+    elif wind_direction < 100:
+        wind_direction = "0{}".format(wind_direction)
 
-        self.text = "{0}@{1} G{2} [{3}]".format(int(wind_direction), wind_speed_kts, wind_gust, bff)
-        self.bar.draw()
+    text = "{0}@{1} G{2} [{3}]".format(int(wind_direction), wind_speed_kts, wind_gust, bff)
+    return text
 
 ##### GROUPS #####
 group_names = [("1: Editor", {'layout': 'monadtall'}),
@@ -171,7 +165,7 @@ group_names = [("1: Editor", {'layout': 'monadtall'}),
                ("4: Discord", {'layout': 'monadwide'}),
                ("5: Spotify", {'layout': 'monadtall'}),
                ("6: Email", {'layout': 'monadtall'}),
-               ("7: TODO", {'layout': 'monadtall'}),
+               ("7", {'layout': 'monadtall'}),
                ("8", {'layout': 'monadtall'}),
                ("9", {'layout': 'monadtall'})]
 
@@ -181,7 +175,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     if name in ["1: Editor", "2: Chrome", "5: Spotify", "8"]:
         keys.append(Key([mod], str(i), lazy.function(to_screen(0)), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-    elif name in ["4: Discord", "7: TODO"]:
+    elif name in ["4: Discord", "7"]:
         keys.append(Key([mod], str(i), lazy.function(to_screen(1)), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
     else:
@@ -231,7 +225,7 @@ prompt = "[{} ]$".format(os.environ["USER"])
 widget_defaults = dict(
     font="Deja Vu Sans Mono for Powerline",
     fontsize = 12,
-    padding = 0,
+    padding = 2,
     background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
@@ -332,11 +326,13 @@ def init_widgets_list(visible_groups, type_screen):
                        padding=0,
                        fontsize=20
                        ),
-               WeatherWidget(
+               widget.GenPollText(
                        background = colors[4],
                        foreground = colors[2],
-                       padding = 0,
-                       fontsize = 14
+                       padding = 5,
+                       fontsize = 14,
+                       func = weather,
+                       update_interval = 300,
                        ),
                widget.TextBox(
                         text=u'\uE0B2',
@@ -554,7 +550,7 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup
 def start_once():
     home = os.path.expanduser('~')
-    subprocess.call(['cat /home/oscar/.config/qtile/autostart.sh | bash'])
+    subprocess.call(['cat autostart.sh | bash'])
 
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this

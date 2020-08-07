@@ -4,6 +4,7 @@ SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_SS:sudo\x20systemctl
 SETUVAR _fish_abbr_p:sudo\x20pacmman
 SETUVAR _fish_abbr_pi:sudo\x20pacman\x20\x2dS
+SETUVAR _fish_abbr_pipu:sudo\x20pip\x20list\x20\x2d\x2doutdated\x20\x2d\x2dformat\x3dfreeze\x20\x7c\x20grep\x20\x2dv\x20\x27\x5e\x5c\x2de\x27\x20\x7c\x20cut\x20\x2dd\x20\x3d\x20\x2df\x201\x20\x20\x7c\x20xargs\x20\x2dn1\x20pip\x20install\x20\x2dU
 SETUVAR _fish_abbr_pu:sudo\x20pacman\x20\x2dSyu
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr

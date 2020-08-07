@@ -87,7 +87,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Run dmenu
-    Key([mod], "e", lazy.spawn("dmenu_run"), desc="Run Dmenu"),
+    Key([mod], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
 
     # Run Emacs
     Key([mod], "o", lazy.spawn("emacs"), desc="Run doom emacs"),
@@ -104,65 +104,64 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
 ]
 
- 
+""" 
 class WeatherWidget(widget.TextBox):
   
     def _configure(self, qtile, bar):
         widget.TextBox._configure(self, qtile, bar)
         self.update()
-        self.timeout_add(300, self.update)
- 
-    def update(self):
-        url = "https://api.climacell.co/v3/weather/realtime"
+        self(300, self.update)
+"""
+def weather():
+    url = "https://api.climacell.co/v3/weather/realtime"
 
-        querystring = {"lat":"56.462","lon":"-2.9707","unit_system":"si","fields":"wind_speed:knots,wind_gust:knots,wind_direction","apikey":"SK6KWrtF7LufrgajNY4AN2mjs4xUkotF"}
+    querystring = {"lat":"56.462","lon":"-2.9707","unit_system":"si","fields":"wind_speed:knots,wind_gust:knots,wind_direction","apikey":"SK6KWrtF7LufrgajNY4AN2mjs4xUkotF"}
 
-        response = requests.request("GET", url, params=querystring)
-        
-        if response.status_code == requests.codes.ok:
-            data = response.json()
-            wind_direction = data["wind_direction"]["value"]
-            wind_speed_kts = data["wind_speed"]["value"]
-            wind_gust = data["wind_gust"]["value"]
+    response = requests.request("GET", url, params=querystring)
+      
+    if response.status_code == requests.codes.ok:
+        data = response.json()
+        wind_direction = data["wind_direction"]["value"]
+        wind_speed_kts = data["wind_speed"]["value"]
+        wind_gust = data["wind_gust"]["value"]
             
-            bff = 0
+        bff = 0
 
-            if wind_speed_kts > 1:
-                bff = 1
-            if wind_speed_kts > 4:
-                bff = 2
-            if wind_speed_kts > 7:
-                bff = 3
-            if wind_speed_kts > 11:
-                bff = 4
-            if wind_speed_kts > 17:
-                bff = 5
-            if wind_speed_kts > 22:
-                bff = 6
-            if wind_speed_kts > 28:
-                bff = 7
-            if wind_speed_kts > 34:
-                bff = 8
-            if wind_speed_kts > 41:
-                bff = 9
-            if wind_speed_kts > 48:
-                bff = 10
-            if wind_speed_kts > 56:
-                bff = 11
-            if wind_speed_kts > 64:
-                bff = 12
+        if wind_speed_kts > 1:
+            bff = 1
+        if wind_speed_kts > 4:
+            bff = 2
+        if wind_speed_kts > 7:
+            bff = 3
+        if wind_speed_kts > 11:
+            bff = 4
+        if wind_speed_kts > 17:
+            bff = 5
+        if wind_speed_kts > 22:
+            bff = 6
+        if wind_speed_kts > 28:
+            bff = 7
+        if wind_speed_kts > 34:
+            bff = 8
+        if wind_speed_kts > 41:
+            bff = 9
+        if wind_speed_kts > 48:
+            bff = 10
+        if wind_speed_kts > 56:
+            bff = 11
+        if wind_speed_kts > 64:
+            bff = 12
 
         
-        wind_speed_kts = int(wind_speed_kts)
-        wind_gust = int(wind_gust)
+    wind_speed_kts = int(wind_speed_kts)
+    wind_gust = int(wind_gust)
+    if wind_speed_kts < 10:
+        wind_speed_kts = "0{}".format(wind_speed_kts)
+    if wind_gust < 10:
+        wind_gust = "0{}".format(wind_gust)
 
-        if wind_speed_kts < 10:
-            wind_speed_kts = "0{}".format(wind_speed_kts)
-        if wind_gust < 10:
-            wind_gust = "0{}".format(wind_gust)
-
-        self.text = "{0}@{1} G{2} [{3}]".format(int(wind_direction), wind_speed_kts, wind_gust, bff)
-        self.bar.draw()
+    text = "{0}@{1} G{2} [{3}]".format(int(wind_direction), wind_speed_kts, wind_gust, bff)
+    return text
 
 ##### GROUPS #####
 group_names = [("1: Editor", {'layout': 'monadtall'}),
@@ -332,11 +331,13 @@ def init_widgets_list(visible_groups, type_screen):
                        padding=0,
                        fontsize=20
                        ),
-               WeatherWidget(
+               widget.GenPollText(
                        background = colors[4],
                        foreground = colors[2],
                        padding = 0,
-                       fontsize = 14
+                       fontsize = 14,
+                       func = weather,
+                       update_interval = 60
                        ),
                widget.TextBox(
                         text=u'\uE0B2',
@@ -554,7 +555,7 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup
 def start_once():
     home = os.path.expanduser('~')
-    subprocess.call(['/home/oscar/.config/qtile/autostart.sh'])
+    subprocess.call(['cat /home/oscar/.config/qtile/autostart.sh | bash'])
 
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this

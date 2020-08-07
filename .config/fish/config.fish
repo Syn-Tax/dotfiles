@@ -16,5 +16,6 @@ abbr p "sudo pacmman"
 abbr pi "sudo pacman -S"
 abbr pu "sudo pacman -Syu"
 abbr SS "sudo systemctl"
+abbr pipu "sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 set PATH /home/oscar/scripts $PATH
