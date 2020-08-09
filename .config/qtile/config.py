@@ -28,9 +28,19 @@ import socket
 import requests
 
 MARGIN = 10
+BORDER = 1
 
 mod = "mod4"
 terminal = "urxvt"
+
+##### COLORS #####
+colors = [["#282a36", "#282a36"], # panel background & inactive border
+          ["#434758", "#434758"], # background for current screen tab
+          ["#ffffff", "#ffffff"], # font color for group names
+          ["#ff5555", "#ff5555"], # border line color for current tab
+          ["#bf5363", "#bf5363"], # border line color for other tab and odd widgets
+          ["#7a84a7", "#7a84a7"], # color for the even widgets
+          ["#7a84a7", "#7a84a7"]] # window name
 
 ##### GROUP CLAMPING #####
 def to_screen(screen):
@@ -143,19 +153,19 @@ def weather():
             bff = 12
 
         
-    wind_speed_kts = int(wind_speed_kts)
-    wind_gust = int(wind_gust)
+    wind_speed_kts = int(float(wind_speed_kts))
+    wind_gust = int(float(wind_gust))
     if wind_speed_kts < 10:
         wind_speed_kts = "0{}".format(wind_speed_kts)
     if wind_gust < 10:
         wind_gust = "0{}".format(wind_gust)
 
     if wind_direction < 10:
-        wind_direction = "00{}".format(wind_direction)
+        wind_direction = "00{}".format(int(float(wind_direction)))
     elif wind_direction < 100:
-        wind_direction = "0{}".format(wind_direction)
+        wind_direction = "0{}".format(int(float(wind_direction)))
 
-    text = "{0}@{1} G{2} [{3}]".format(int(wind_direction), wind_speed_kts, wind_gust, bff)
+    text = "{0}@{1} G{2} [{3}]".format(wind_direction, wind_speed_kts, wind_gust, bff)
     return text
 
 ##### GROUPS #####
@@ -199,8 +209,8 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(margin=MARGIN, border_width=0),
-    layout.MonadWide(margin=MARGIN, border_width=0),
+    layout.MonadTall(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0]),
+    layout.MonadWide(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0]),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -208,14 +218,6 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-##### COLORS #####
-colors = [["#282a36", "#282a36"], # panel background
-          ["#434758", "#434758"], # background for current screen tab
-          ["#ffffff", "#ffffff"], # font color for group names
-          ["#ff5555", "#ff5555"], # border line color for current tab
-          ["#bf5363", "#bf5363"], # border line color for other tab and odd widgets
-          ["#7a84a7", "#7a84a7"], # color for the even widgets
-          ["#7a84a7", "#7a84a7"]] # window name
 
 
 ##### PROMPT #####
@@ -550,7 +552,7 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup
 def start_once():
     home = os.path.expanduser('~')
-    subprocess.call(['cat autostart.sh | bash'])
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
