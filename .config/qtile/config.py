@@ -59,6 +59,7 @@ keys = [
     # Launch programs
     Key([mod], "f", lazy.spawn("urxvt -e sh -c ranger")),
     Key([mod], "v", lazy.spawn("emacs")),
+    Key([mod], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
 
     # suspend system
     Key([mod, "shift"], "l", lazy.spawn("systemctl suspend")),
