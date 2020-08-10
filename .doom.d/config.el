@@ -69,34 +69,22 @@
 ;; called after evil-collection makes its keybindings
 (add-hook 'evil-collection-setup-hook #'my-hjkl-rotation)
 
-(with-eval-after-load 'evil
+(with-eval-after-load 'evil-maps
   (define-key evil-normal-state-map "D" 'evil-delete-whole-line)
 
-  ;; evil keybinds for dvorak (normal mode)
-  (define-key evil-normal-state-map "h" 'evil-previous-visual-line)
-  (define-key evil-normal-state-map "t" 'evil-next-visual-line)
-  (define-key evil-normal-state-map "d" 'evil-backward-char)
-  (define-key evil-normal-state-map "n" 'evil-forward-char)
+  (map! :nv "d" #'evil-backward-char
+        :nv "h" #'evil-previous-line
+        :nv "t" #'evil-next-line
+        :nv "n" #'evil-forward-char)
 
-  ;; evil keybinds for dvorak (visual mode)
-  ;(define-key evil-visual-state-map "h" 'evil-previous-line)
-  ;(define-key evil-visual-state-map "t" 'evil-next-line)
-  ;(define-key evil-visual-state-map "d" 'evil-backward-char)
-  ;(define-key evil-visual-state-map "n" 'evil-forward-char)
+  (map! :after evil-org
+        :map evil-org-mode-map
+        :n "d" nil)
 
-  ;;(define-key  "d" 'evil-backward-char)
-  ;;(evil-define-key 'normal 'global (kbd "d") nil)
-  ;;(evil-define-key 'normal org-mode-map (kbd "h") 'evil-previous-line)
-  ;;(evil-define-key 'normal org-mode-map (kbd "t") 'evil-next-line)
-  ;;(evil-define-key 'normal org-mode-map (kbd "n") 'evil-forward-char)
-  ;;(evil-global-set-key 'normal (kbd "d") 'evil-backward-char)
-  ;;(evil-define-key 'normal global-map (kbd "t") (kbd "j"))
-  ;;(evil-define-key 'normal global-map (kbd "h") (kbd "k"))
-  ;;(evil-define-key 'normal global-map (kbd "n") (kbd "l"))
-)
-;;(use-package darkroom
-;;  :init
-;;  (setq darkroom-text-scale-increase 0))
+ )
+(use-package darkroom
+  :init
+  (setq darkroom-text-scale-increase 1))
 
 (map! (:leader
        (:desc "evil-window-up" :nv "w h" 'evil-window-up
@@ -104,5 +92,5 @@
         :desc "evil-window-left" :nv "w d" 'evil-window-left
         :desc "evil-window-right" :nv "w n" 'evil-window-right
 
-        ;;:desc "darkroom-mode" :nv "t z" 'darkroom-mode
+        :desc "darkroom-mode" :nv "t z" 'darkroom-mode
         )))
