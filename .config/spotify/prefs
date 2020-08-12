@@ -1,5 +1,5 @@
-autologin.blob="w1MswoPx/sOHNT7bc0aoFNQTTz0rr5ybOFeCo1RHXyLo6fcu53TQhXVeo/3EapT/JdPpWyieqsHhBmJjdU7d8JBBXk0nQRtij208W4p99rijTDUwi5Lpg+5uQoVc9LBHvM7v+hNF5wrSQ3xQExMNqSOkV5zOaTg9jh10dHqLCioJI8vdx1B9P5fhhd+U6GLg1MuVR64KGOLiF6MXFfWuYA=="
 autologin.saved_credentials="{\"syn483\":[\"syn483\",\"w1MswoPx/sOHNT7bc0aoFNQTTz0rr5ybOFeCo1RHXyLo6fcu53TQhXVeo/3EapT/JdPpWyieqsHhBmJjdU7d8JBBXk0nQRtij208W4p99rijTDUwi5Lpg+5uQoVc9LBHvM7v+hNF5wrSQ3xQExMNqSOkV5zOaTg9jh10dHqLCioJI8vdx1B9P5fhhd+U6GLg1MuVR64KGOLiF6MXFfWuYA==\"]}"
+autologin.blob="w1MswoPx/sOHNT7bc0aoFNQTTz0rr5ybOFeCo1RHXyLo6fcu53TQhXVeo/3EapT/JdPpWyieqsHhBmJjdU7d8JBBXk0nQRtij208W4p99rijTDUwi5Lpg+5uQoVc9LBHvM7v+hNF5wrSQ3xQExMNqSOkV5zOaTg9jh10dHqLCioJI8vdx1B9P5fhhd+U6GLg1MuVR64KGOLiF6MXFfWuYA=="
 app.window.position.x=1290
 autologin.username="syn483"
 app.window.position.saved=true
@@ -9,6 +9,6 @@ app.window.position.y=30
 autologin.canonical_username="syn483"
 storage.last-location="/home/oscar/.cache/spotify/Storage"
 app.window.position.width=1900
-core.clock_delta=24
+core.clock_delta=27
 app.last-launched-version="1.1.10.546.ge08ef575"
 app.autostart-configured=true

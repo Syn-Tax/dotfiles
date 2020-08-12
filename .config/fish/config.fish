@@ -1,5 +1,3 @@
-neofetch
-
 function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
     if test "$argv" = !!
     eval command sudo $history[1]
@@ -19,3 +17,4 @@ abbr SS "sudo systemctl"
 abbr pipu "sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 set PATH /home/oscar/scripts $PATH
+set PATH /home/oscar/blender-git/build_linux/bin/blender $PATH

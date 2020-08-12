@@ -31,6 +31,7 @@ MARGIN = 10
 BORDER = 1
 
 mod = "mod4"
+mod2 = "mod1"
 terminal = "urxvt"
 
 ##### COLORS #####
@@ -60,6 +61,9 @@ keys = [
     Key([mod], "f", lazy.spawn("urxvt -e sh -c ranger")),
     Key([mod], "v", lazy.spawn("emacs")),
     Key([mod], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
+    Key([mod2], "f", lazy.spawn("urxvt -e sh -c ranger")),
+    Key([mod2], "v", lazy.spawn("emacs")),
+    Key([mod2], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
 
     # suspend system
     Key([mod, "shift"], "l", lazy.spawn("systemctl suspend")),
@@ -96,16 +100,20 @@ keys = [
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod2], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Run dmenu/dmenu scripts
     Key([mod], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
+    Key([mod2], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
     Key([mod], "g", lazy.spawn("/home/oscar/scripts/bookmenu")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "a", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod2, "shift"], "a", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "shift"], "p", lazy.restart(), desc="Restart qtile"),
+    Key([mod2, "shift"], "p", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown qtile"),
 
     # general volume
@@ -186,12 +194,18 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     if name in ["1: Editor", "2: Chrome", "5: Spotify", "8"]:
         keys.append(Key([mod], str(i), lazy.function(to_screen(0)), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+        keys.append(Key([mod2], str(i), lazy.function(to_screen(0)), lazy.group[name].toscreen()))        # Switch to another group
+        keys.append(Key([mod2, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
     elif name in ["4: Discord", "7"]:
         keys.append(Key([mod], str(i), lazy.function(to_screen(1)), lazy.group[name].toscreen()))        # Switch to another group
+        keys.append(Key([mod2], str(i), lazy.function(to_screen(1)), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+        keys.append(Key([mod2, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
     else:
         keys.append(Key([mod], str(i), lazy.function(to_screen(2)), lazy.group[name].toscreen()))        # Switch to another group
+        keys.append(Key([mod2], str(i), lazy.function(to_screen(2)), lazy.group[name].toscreen()))        # Switch to another group
         keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+        keys.append(Key([mod2, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
 
 
@@ -212,6 +226,7 @@ layouts = [
     # layout.Matrix(),
     layout.MonadTall(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0]),
     layout.MonadWide(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0]),
+    layout.Floating(border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0])
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),

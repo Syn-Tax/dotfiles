@@ -145,6 +145,3 @@ fi
 
 # CUSTOM ALIASES
 alias ..='cd ..'
-
-
-neofetch
