@@ -18,3 +18,5 @@ abbr pipu "sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = 
 
 set PATH /home/oscar/scripts $PATH
 set PATH /home/oscar/blender-git/build_linux/bin/blender $PATH
+
+neofetch

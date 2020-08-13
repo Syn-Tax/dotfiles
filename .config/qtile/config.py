@@ -28,7 +28,7 @@ import socket
 import requests
 
 MARGIN = 10
-BORDER = 1
+BORDER = 2
 
 mod = "mod4"
 mod2 = "mod1"
@@ -408,6 +408,123 @@ def init_widgets_list(visible_groups, type_screen):
                         background = colors[5]
                         )
               ]
+    elif type_screen == 1:
+        widgets_list = [
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 6,
+                        foreground = colors[2],
+                        background = colors[0]
+                        ),
+               widget.GroupBox(font="Deja Vu Sans Mono",
+                        fontsize = 9,
+                        margin_y = 3,
+                        margin_x = 0,
+                        padding_y = 5,
+                        padding_x = 5,
+                        borderwidth = 3,
+                        active = colors[2],
+                        inactive = colors[2],
+                        rounded = False,
+                        highlight_color = colors[1],
+                        highlight_method = "line",
+                        this_current_screen_border = colors[3],
+                        this_screen_border = colors [4],
+                        other_current_screen_border = colors[0],
+                        other_screen_border = colors[0],
+                        foreground = colors[2],
+                        background = colors[0],
+                        visible_groups=visible_groups
+                        ),
+               widget.Prompt(
+                        prompt=prompt,
+                        font="Deja Vu Sans Mono",
+                        padding=10,
+                        foreground = colors[3],
+                        background = colors[1]
+                        ),
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 40,
+                        foreground = colors[2],
+                        background = colors[0]
+                        ),
+               widget.WindowName(
+                        foreground = colors[6],
+                        background = colors[0],
+                        padding = 0
+                        ),
+               widget.TextBox(
+                        text=u'\uE0B2',
+                        background = colors[0],
+                        foreground = colors[4],
+                        padding=0,
+                        fontsize=20
+                        ),
+               widget.Pomodoro(
+                       foreground=colors[2],
+                       background=colors[4],
+                       padding = 5,
+                       color_inactive=colors[2],
+                       color_active=colors[2],
+                       color_break=colors[2]
+                       ),
+               widget.TextBox(
+                        text=u'\uE0B2',
+                        background = colors[4],
+                        foreground = colors[5],
+                        padding=0,
+                        fontsize=20
+                        ),
+               widget.TextBox(
+                       text=" VOL:",
+                        foreground=colors[2],
+                        background=colors[5],
+                        padding = 0
+                        ),
+               widget.Volume(
+                        foreground = colors[2],
+                        background = colors[5],
+                        padding = 5
+                        ),
+               widget.TextBox(
+                        text=u'\uE0B2',
+                        background = colors[5],
+                        foreground = colors[4],
+                        padding=0,
+                        fontsize=20
+                        ),
+               widget.CurrentLayoutIcon(
+                        custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
+                        foreground = colors[0],
+                        background = colors[4],
+                        padding = 0,
+                        scale=0.7
+                        ),
+               widget.CurrentLayout(
+                        foreground = colors[2],
+                        background = colors[4],
+                        padding = 5
+                        ),
+               widget.TextBox(
+                        text=u'\uE0B2',
+                        background = colors[4],
+                        foreground = colors[5],
+                        padding=0,
+                        fontsize=20
+                        ),
+               widget.Clock(
+                        foreground = colors[2],
+                        background = colors[5],
+                        format="%A, %B %d %H:%M:%S "
+                        ),
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 10,
+                        foreground = colors[0],
+                        background = colors[5]
+                        )
+              ]
     else:
         widgets_list = [
                widget.Sep(
@@ -525,7 +642,7 @@ def init_widgets_screen2(visible_groups, type_screen):
 def init_screens():
     return [Screen(top=bar.Bar(widgets=init_widgets_screen2(["1: Editor", "2: Chrome", "5: Spotify", "8"], 0), opacity=1, size=20)),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(["4: Discord", "7"], 1), opacity=1, size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(["3: Terminals", "6: Email", "9"], 1), opacity=1, size=20))]
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(["3: Terminals", "6: Email", "9"], 2), opacity=1, size=20))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
