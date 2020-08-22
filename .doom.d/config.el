@@ -49,51 +49,21 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(setq doom-themes-neotree-enable-file-icons t)
+(setq doom-themes-neotree-file-icons t)
 
-(defun my-hjkl-rotation (_mode mode-keymaps &rest _rest)
-  (evil-collection-translate-key 'normal mode-keymaps
-    "t" "j"
-    "h" "k"
-    "n" "l"
-    "d" "h"
-    ; edit them back
-    ;"j" "t"
-    ;"k" "h"
-    ;"n" "l"
-    ;"d" "h"
-    ))
-
-;; called after evil-collection makes its keybindings
-(add-hook 'evil-collection-setup-hook #'my-hjkl-rotation)
-
-;; keybinds
-(map! :nv "C-/" #'comment-or-uncomment-region)
-
-(with-eval-after-load 'evil-maps
-  (map! :nv "D" #'evil-delete-whole-line)
-
-  (map! :nv "d" #'evil-backward-char
-        :nv "h" #'evil-previous-line
-        :nv "t" #'evil-next-line
-        :nv "n" #'evil-forward-char)
-
-  (map! :after evil-org
-        :map evil-org-mode-map
-        :n "d" nil)
-
- )
+(setq-default frame-title-format '("Doom Emacs"))
 
 (map! (:leader
-       (:desc "evil-window-up" :nv "w h" 'evil-window-up
-        :desc "evil-window-down" :nv "w t" 'evil-window-down
-        :desc "evil-window-left" :nv "w d" 'evil-window-left
-        :desc "evil-window-right" :nv "w n" 'evil-window-right
-
+       (
         :desc "darkroom-mode" :nv "t z" 'darkroom-mode
         :desc "increase text size" :nv "t d" 'text-scale-mode
 
         :desc "project search" :nv "p R" #'+ivy/project-search
+
+        :desc "elfeed" :nv "o e" 'elfeed
+
+        (:desc "elfeed" :prefix "e"
+         :desc "update" :nv "u" 'elfeed-update)
         )))
 
 ;; org mode settings
@@ -101,6 +71,9 @@
 (setq org-agenda-files (file-expand-wildcards "~/Notes/*"))
 
 (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)
+                                    (darkroom-mode)))
+
+(add-hook 'org-agenda-mode-hook (lambda () (display-line-numbers-mode 0)
                                     (darkroom-mode)))
 
 (setq darkroom-text-scale-increase 1.5)
@@ -128,35 +101,39 @@
             )))
 (after! org
   (setq org-todo-keywords '((sequence "TODO(t)" "EVENT(e)" "NEXT(N)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "DELEGATED(D)" "CANCELLED(C)")))
-
 )
 
-;; org-super-agenda
-(use-package! org-super-agenda
-  :after org-agenda
-  :init
+(setq org-startup-folded "fold")
+
+(after! org-agenda
   (setq org-agenda-skip-scheduled-if-done t
         org-agenda-skip-deadline-if-done t
         org-agenda-include-deadlines t
         org-agenda-block-separator nil
         org-agenda-compact-blocks t
         org-agenda-start-day nil ;; i.e. today
-        org-agenda-span 14
-        org-agenda-start-on-weekday nil)
-  (setq org-super-agenda-groups '((:name "Today"
-                                   :scheduled today)
-                                  (:name "Due Today"
-                                   :deadline today)
-                                  (:name "Important"
-                                   :priority "A")
-                                  (:name "Overdue"
-                                   :deadline past)
-                                  (:name "Due Soon"
-                                   :deadline future)
-                                  (:name "Soon"
-                                   :scheduled future)
-                                  (:name "Waiting..."
-                                   :todo "WAITING")))
-  :config
-  (org-super-agenda-mode)
-  )
+        org-agenda-span 3
+        org-agenda-start-on-weekday nil
+        org-agenda-entry-types '(:deadline :todo :scheduled)
+        )
+)
+
+(use-package! org-checklist)
+
+(use-package! org-wild-notifier)
+
+(after! org-wild-notifier
+  (org-wild-notifier-mode))
+
+;; elfeed
+(setq elfeed-feeds
+      '(("http://feeds.bbci.co.uk/news/scotland/rss.xml" news)
+        ("http://feeds.bbci.co.uk/news/video_and_audio/technology/rss.xml" tech news)
+        ("https://www.theguardian.com/uk-news/rss" news)
+        ("https://www.theguardian.com/uk/technology/rss" tech news)
+        ("http://www.independent.co.uk/rss" news)))
+
+;; alert
+(after! alert
+  (setq alert-default-style 'notifications)
+)

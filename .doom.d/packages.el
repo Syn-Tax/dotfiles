@@ -50,3 +50,5 @@
 ;(unpin! t)
 (package! darkroom)
 (package! org-super-agenda)
+(package! org-plus-contrib)
+(package! org-wild-notifier)

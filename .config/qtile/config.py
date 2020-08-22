@@ -66,7 +66,8 @@ keys = [
     Key([mod2], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
 
     # suspend system
-    Key([mod, "shift"], "l", lazy.spawn("systemctl suspend")),
+    Key([mod, "shift"], "s", lazy.spawn("systemctl suspend")),
+    Key([mod, "shift"], "l", lazy.spawn("slock")),
 
     # Move windows up or down in current stack
     Key([mod, "control"], "t", lazy.layout.shuffle_down(),
@@ -173,6 +174,8 @@ def weather():
         wind_direction = "00{}".format(int(float(wind_direction)))
     elif wind_direction < 100:
         wind_direction = "0{}".format(int(float(wind_direction)))
+    else:
+        wind_direction = int(float(wind_direction))
 
     text = "{0}@{1} G{2} [{3}]".format(wind_direction, wind_speed_kts, wind_gust, bff)
     return text

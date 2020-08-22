@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-sshfs pi@192.168.1.124:/home/pi /home/oscar/RPI -C
+#sshfs pi@192.168.1.124:/home/pi /home/oscar/RPI -C
 picom --experimental-backends --backend glx &
+watch -n 300 notes-sync.sh &
 feh --bg-fill ~/wallpapers/0051.jpg &
 flameshot &
 dunst >> dunst_log.txt &

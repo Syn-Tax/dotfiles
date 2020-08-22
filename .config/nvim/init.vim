@@ -15,6 +15,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-markdown'
 "Plug 'masukomi/vim-markdown-folding', { 'for': 'markdown' }
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 call plug#end()
 
@@ -38,21 +39,7 @@ call g:quickmenu#append('vimrc', ':edit /home/oscar/.config/nvim/init.vim')
 
 let mapleader = " "
 
-map <leader>o za
 nnoremap <silent><leader><cr> :call quickmenu#toggle(0)<cr>
-
-
-nnoremap d h
-nnoremap h k
-nnoremap t j
-nnoremap n l
-
-nnoremap D dd
-
-vnoremap d h
-vnoremap h k
-vnoremap t j
-vnoremap n l
 
 map <leader>d <C-w>h
 map <leader>h <C-w>k
