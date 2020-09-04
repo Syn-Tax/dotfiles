@@ -28,7 +28,8 @@ import socket
 import requests
 
 MARGIN = 10
-BORDER = 2
+BORDER = 0
+CORNER_RADIUS = 15
 
 mod = "mod4"
 mod2 = "mod1"
@@ -227,9 +228,9 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0]),
-    layout.MonadWide(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0]),
-    layout.Floating(border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0])
+    layout.MonadTall(margin=MARGIN, border_width=BORDER, corner_radius=CORNER_RADIUS, border_normal=colors[0][0], border_focus=colors[4][0]),
+    layout.MonadWide(margin=MARGIN, border_width=BORDER, corner_radius=CORNER_RADIUS, border_normal=colors[0][0], border_focus=colors[4][0]),
+    layout.Floating(border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0], corner_radius=CORNER_RADIUS)
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),

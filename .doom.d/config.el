@@ -53,12 +53,28 @@
 
 (setq-default frame-title-format '("Doom Emacs"))
 
+(defun automated-commit ()
+  (interactive)
+  (magit-call-git "add" ".")
+  (magit-call-git "commit" "-am" "Automated Commit")
+  (magit-call-git "push")
+  (magit-refresh))
+
+(defun automated-pull ()
+  (interactive)
+  (magit-call-git "pull")
+  (magit-refresh))
+
 (map! (:leader
        (
         :desc "darkroom-mode" :nv "t z" 'darkroom-mode
         :desc "increase text size" :nv "t d" 'text-scale-mode
 
         :desc "project search" :nv "p R" #'+ivy/project-search
+
+        :desc "Autommatic Commit" :nv "g c c" 'automated-commit
+        :desc "Pull" :nv "g c p" 'automated-pull
+        :desc "Refresh" :nv "g r" 'magit-refresh
 
         :desc "elfeed" :nv "o e" 'elfeed
 
@@ -71,7 +87,10 @@
 (setq org-agenda-files (file-expand-wildcards "~/Notes/*"))
 
 (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)
-                                    (darkroom-mode)))
+                           (darkroom-mode)
+                           (automated-pull)))
+
+;;(add-hook 'after-save-hook (lambda () (when (eq major-mode 'org-mode) (automated-pull) (automated-commit))))
 
 (add-hook 'org-agenda-mode-hook (lambda () (display-line-numbers-mode 0)
                                     (darkroom-mode)))

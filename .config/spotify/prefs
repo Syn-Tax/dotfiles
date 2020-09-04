@@ -9,6 +9,6 @@ app.window.position.y=32
 autologin.canonical_username="syn483"
 storage.last-location="/home/oscar/.cache/spotify/Storage"
 app.window.position.width=946
-core.clock_delta=31
+core.clock_delta=44
 app.last-launched-version="1.1.10.546.ge08ef575"
 app.autostart-configured=true
