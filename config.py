@@ -28,20 +28,21 @@ import socket
 import requests
 
 MARGIN = 10
-BORDER = 0
+BORDER = 2
 CORNER_RADIUS = 15
 IS_LAPTOP = True
 
 mod = "mod4"
-terminal = "urxvt"
+terminal = "alacritty"
+shell = "fish"
 
 ##### COLORS #####
-colors = [["#282a36", "#282a36"], # panel background & inactive border
+colors = [["#2E3440", "#2E3440"], # panel background & inactive border
           ["#434758", "#434758"], # background for current screen tab
           ["#ffffff", "#ffffff"], # font color for group names
-          ["#ff5555", "#ff5555"], # border line color for current tab
-          ["#bf5363", "#bf5363"], # border line color for other tab and odd widgets
-          ["#7a84a7", "#7a84a7"], # color for the even widgets
+          ["#8FBCBB", "#8FBCBB"], # border line color for current tab
+          ["#81A1C1", "#81A1C1"], # border line color for other tab and odd widgets
+          ["#BF616A", "#BF616A"], # color for the even widgets
           ["#7a84a7", "#7a84a7"]] # window name
 
 ##### GROUP CLAMPING #####
@@ -61,10 +62,9 @@ keys = [
     Key([mod, "shift", "control"], "z", lazy.screen.next_group()),
     Key([mod, "shift", "control"], "x", lazy.screen.prev_group()),
     # Launch programs
-    Key([mod], "f", lazy.spawn("{} -e sh -c ranger".format(terminal))),
     Key([mod], "w", lazy.spawn("{} -e sh -c nmtui".format(terminal))),
     Key([mod], "v", lazy.spawn("emacsclient -nc")),
-    Key([mod], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
+    Key([mod], "o", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
     Key([mod], "s", lazy.spawn("write_stylus")),
     Key([mod], "b", lazy.spawn("brave")),
 
@@ -78,8 +78,8 @@ keys = [
         desc="Move window up in current stack "),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next(),
-        desc="Switch window focus to other pane(s) of stack"),
+    #Key([mod], "space", lazy.layout.next(),
+    #    desc="Switch window focus to other pane(s) of stack"),
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate(),
@@ -97,7 +97,7 @@ keys = [
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("{} -e {}".format(terminal, shell)), desc="Launch terminal"),
 
     # Run dmenu/dmenu scripts
     Key([mod], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
@@ -116,20 +116,18 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 5%+")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-")),
-    Key([], "XF86TouchpadOff", lazy.spawn("xinput disable 'AT Translated Set 2 keyboard' && synclient TouchpadOff=1")),
-    Key([], "XF86TouchpadOn", lazy.spawn("xinput enable 'AT Translated Set 2 keyboard' && synclient TouchpadOff=0")),
 ]
-
-def get_volume():
-    return str(subprocess.Popen(["/home/oscar/.config/qtile/volume.sh"], stdout=subprocess.PIPE).communicate()[0])[2:-3]
 
 def get_brightness():
     return str(int((int(str(subprocess.Popen(["brightnessctl", "g"], stdout=subprocess.PIPE).communicate()[0])[2:-3]) / 255) * 100)) + "%"
 
 def get_wifi():
-    string = str(subprocess.Popen(["/home/oscar/.config/qtile/wifi.sh"], stdout=subprocess.PIPE).communicate()[0])[68:71]
+    string = str((subprocess.Popen(["/home/oscar/.config/qtile/wifi.sh"], stdout=subprocess.PIPE).communicate()[0])[20])
 
-    string = string + "%"
+    if string == "":
+        string = "N/A"
+    else:
+        string = string + "%"
 
     return string
 
@@ -139,10 +137,10 @@ group_names = [("1: Editor", {'layout': 'monadtall'}),
                ("3: Terminals", {'layout': 'monadtall'}),
                ("4: Discord", {'layout': 'monadtall'}),
                ("5: Write", {'layout': 'monadtall'}),
-               ("6", {'layout': 'monadtall'}),
-               ("7", {'layout': 'monadtall'}),
+               ("6: Email", {'layout': 'monadtall'}),
+               ("7: Notion", {'layout': 'monadtall'}),
                ("8", {'layout': 'monadtall'}),
-               ("9", {'layout': 'monadtall'})]
+               ("9", {'layout': 'floating'})]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -152,10 +150,10 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 
 # DEFAULT THEME SETTINGS FOR LAYOUTS #####
-layout_theme = {"border_width": 0,
-                "margin": 6,
-                "border_focus": "e1acff",
-                "border_normal": "1D2330"
+layout_theme = {"border_width": BORDER,
+                "margin": MARGIN,
+                "border_focus": colors[4][0],
+                "border_normal": colors[0][0]
                 }
 
 
@@ -167,11 +165,11 @@ layouts = [
     # layout.Columns(),
     # layout.Matrix(),
     # layout.MonadTall(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0], corner_radius=CORNER_RADIUS),
-    layout.MonadTall(margin=MARGIN, border_width=BORDER, corner_radius=CORNER_RADIUS),
-    layout.MonadWide(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0], corner_radius=CORNER_RADIUS),
-    layout.Floating(border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0], corner_raduis=CORNER_RADIUS)
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    layout.Floating(**layout_theme),
     # layout.RatioTile(),
-    # layout.Tile(),
+    #layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -212,7 +210,7 @@ def init_widgets_list():
                         background = colors[0]
                         ),
                widget.GroupBox(font="Deja Vu Sans Mono",
-                        fontsize = 12,
+                        fontsize = 11,
                         margin_y = 3,
                         margin_x = 0,
                         padding_y = 5,
@@ -440,15 +438,16 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'notification'},
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
+    {'wmclass': 'ulauncher'},
     {'wmclass': 'confirmreset'},  # gitk
     {'wmclass': 'makebranch'},  # gitk
     {'wmclass': 'maketag'},  # gitk
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
+], border_width=0)
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 
 @hook.subscribe.startup
 def start_once():
