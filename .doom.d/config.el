@@ -21,16 +21,20 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 15))
+(setq doom-font (font-spec :family "DejaVuSansMono Nerd Font" :size 17))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-vibrant)
 
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/Notes/")
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -49,6 +53,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
 (setq doom-themes-neotree-file-icons t)
 
 (setq-default frame-title-format '("Doom Emacs"))
@@ -67,12 +72,11 @@
 
 (map! (:leader
        (
-        :desc "darkroom-mode" :nv "t z" 'darkroom-mode
-        :desc "increase text size" :nv "t d" 'text-scale-mode
+        ;;:desc "darkroom-mode" :nv "t z" 'darkroom-mode
 
         :desc "project search" :nv "p R" #'+ivy/project-search
 
-        :desc "Autommatic Commit" :nv "g c c" 'automated-commit
+        :desc "Automatic Commit" :nv "g c c" 'automated-commit
         :desc "Pull" :nv "g c p" 'automated-pull
         :desc "Refresh" :nv "g r" 'magit-refresh
 
@@ -80,28 +84,73 @@
 
         (:desc "elfeed" :prefix "e"
          :desc "update" :nv "u" 'elfeed-update)
+
+        (:desc "refrences" :prefix "m r"
+         :desc "insert" :nv "i" 'org-ref-insert-link
+         :desc "jump" :nv "m" 'org-ref-latex-click
+         )
         )))
+
+
+
+;; dvorak keybinds
+(map! :nv "h" 'evil-next-visual-line)
+(map! :nv "t" 'evil-previous-visual-line)
+(map! :nv "n" 'evil-forward-char)
+(map! :nv "d" 'evil-backward-char)
+(map! :nv "k" 'evil-delete)
+(map! :nv "K" 'evil-delete-line)
+
+(defun evil-org-binds ()
+  (evil-define-key 'normal evil-org-mode-map (kbd "d") nil)
+  (evil-define-key 'normal evil-org-mode-map (kbd "k") #'evil-org-delete)
+)
+
+(add-hook 'evil-org-mode-hook 'evil-org-binds)
+
+(defun my-hjkl-rotation (_mode mode-keymaps &rest _rest)
+  (evil-collection-translate-key 'normal mode-keymaps
+    "h" "j"
+    "t" "k"
+    "n" "l"
+    "d" "h"
+    ; edit them back
+    "j" "h"
+    "k" "t"
+    "n" "l"
+    "d" "h"
+    ))
+
+(add-hook 'evil-collection-setup-hook #'my-hjkl-rotation)
+
+;; YASnippets
+(after! yasnippet
+  yas-global-mode)
 
 ;; org mode settings
 (setq org-directory "~/Notes")
-(setq org-agenda-files (file-expand-wildcards "~/Notes/*"))
+(setq org-startup-folded t)
+(setq org-startup-with-inline-images)
+(setq org-agenda-files (delete "~/Notes/.gitignore" (file-expand-wildcards "~/Notes/*")))
 
-(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)
-                           (darkroom-mode)
-                           (automated-pull)))
+;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)
+                           ;;(darkroom-mode)
+;;                           ))
+
+(add-hook 'org-mode-hook (text-scale-increase 1))
 
 ;;(add-hook 'after-save-hook (lambda () (when (eq major-mode 'org-mode) (automated-pull) (automated-commit))))
 
-(add-hook 'org-agenda-mode-hook (lambda () (display-line-numbers-mode 0)
-                                    (darkroom-mode)))
+(add-hook 'org-agenda-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 (setq darkroom-text-scale-increase 1.5)
 (setq doom-big-font-increment 3)
+(setq org-support-shift-select t)
 
 ;; todo keyword settings
 (use-package! hl-todo
     :hook ((prog-mode . hl-todo-mode)
-         (org-mode . hl-todo-mode))
+           (org-mode . hl-todo-mode))
     :config
     (setq hl-todo-highlight-punctuation ":"
           hl-todo-keyword-faces
@@ -118,11 +167,22 @@
             ("NOTE" . "#b1951d")
             ("TEMP" . "#b1951d")
             )))
-(after! org
-  (setq org-todo-keywords '((sequence "TODO(t)" "EVENT(e)" "NEXT(N)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "DELEGATED(D)" "CANCELLED(C)")))
-)
 
 (setq org-startup-folded "fold")
+
+;;(after! darkroom-mode
+;;  (setq darkroom-margins 0)
+;;  )
+
+(after! org
+  (setq org-todo-keywords '((sequence "TODO(t)" "EVENT(e)" "NEXT(N)" "PROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "DELEGATED(D)" "CANCELLED(C)")))
+  (setq  org-latex-pdf-process
+         '("latexmk -pdf %f"))
+  )
+
+(after! writeroom-mode
+  (setq +zen-text-scale 1.5)
+)
 
 (after! org-agenda
   (setq org-agenda-skip-scheduled-if-done t
@@ -136,13 +196,13 @@
         org-agenda-entry-types '(:deadline :todo :scheduled)
         )
 )
-
 (use-package! org-checklist)
 
-(use-package! org-wild-notifier)
-
-(after! org-wild-notifier
+(use-package! org-wild-notifier
+  :config
   (org-wild-notifier-mode))
+
+(setq org-image-actual-width nil)
 
 ;; elfeed
 (setq elfeed-feeds
@@ -150,9 +210,46 @@
         ("http://feeds.bbci.co.uk/news/video_and_audio/technology/rss.xml" tech news)
         ("https://www.theguardian.com/uk-news/rss" news)
         ("https://www.theguardian.com/uk/technology/rss" tech news)
-        ("http://www.independent.co.uk/rss" news)))
+        ("http://www.independent.co.uk/rss" news)
+        ("http://www.tagesspiegel.de/contentexport/feed/politik" german politics news)
+        ("http://www.tagesspiegel.de/contentexport/feed/berlin" german news)
+        ("https://www.reddit.com/r/linux.rss" reddit linux)
+        ("https://opensource.com/feed" opensource linux)
+        ("https://itsfoss.com/feed/" itsfoss linux)
+        ("http://feeds.feedburner.com/d0od" omgubuntu linux)
+        ("https://feeds.feedburner.com/visualcapitalist" news school)
+))
 
 ;; alert
 (after! alert
   (setq alert-default-style 'notifications)
 )
+
+;; pdf-tools
+(use-package! pdf-tools
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page))
+
+(use-package! org-ref
+  :init
+;;  (setq org-latex-pdf-process
+;;        '("pdflatex -interaction nonstopmode -output-directory %o %f"
+;;          "bibtex %b"
+;;          "pdflatex -interaction nonstopmode -output-directory %o %f"
+;;          "pdflatex -interaction nonstopmode -output-directory %o %f"))
+  (setq org-ref-completion-library 'org-ref-ivy-cite)
+  (setq bibtex-dialect 'biblatex)
+)
+
+(use-package! edit-server
+  :config
+  (setq edit-server-host "127.0.0.1:9292")
+  :init
+  (edit-server-start)
+)
+
+;; dired
+(use-package! all-the-icons-dired
+  :init
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))

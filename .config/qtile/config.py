@@ -28,20 +28,21 @@ import socket
 import requests
 
 MARGIN = 10
-BORDER = 0
+BORDER = 2
 CORNER_RADIUS = 15
+IS_LAPTOP = True
 
 mod = "mod4"
-mod2 = "mod1"
-terminal = "urxvt"
+terminal = "alacritty"
+shell = "fish"
 
 ##### COLORS #####
-colors = [["#282a36", "#282a36"], # panel background & inactive border
+colors = [["#2E3440", "#2E3440"], # panel background & inactive border
           ["#434758", "#434758"], # background for current screen tab
           ["#ffffff", "#ffffff"], # font color for group names
-          ["#ff5555", "#ff5555"], # border line color for current tab
-          ["#bf5363", "#bf5363"], # border line color for other tab and odd widgets
-          ["#7a84a7", "#7a84a7"], # color for the even widgets
+          ["#8FBCBB", "#8FBCBB"], # border line color for current tab
+          ["#81A1C1", "#81A1C1"], # border line color for other tab and odd widgets
+          ["#BF616A", "#BF616A"], # color for the even widgets
           ["#7a84a7", "#7a84a7"]] # window name
 
 ##### GROUP CLAMPING #####
@@ -53,32 +54,32 @@ def to_screen(screen):
 
 keys = [
     # Switch between windows in current stack pane
-    Key([mod], "t", lazy.layout.down(),
+    Key([mod], "h", lazy.layout.down(),
         desc="Move focus down in stack pane"),
-    Key([mod], "h", lazy.layout.up(),
+    Key([mod], "t", lazy.layout.up(),
         desc="Move focus up in stack pane"),
 
+    Key([mod, "shift", "control"], "z", lazy.screen.next_group()),
+    Key([mod, "shift", "control"], "x", lazy.screen.prev_group()),
     # Launch programs
-    Key([mod], "f", lazy.spawn("urxvt -e sh -c ranger")),
-    Key([mod], "v", lazy.spawn("emacs")),
-    Key([mod], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
-    Key([mod2], "f", lazy.spawn("urxvt -e sh -c ranger")),
-    Key([mod2], "v", lazy.spawn("emacs")),
-    Key([mod2], "p", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
+    Key([mod], "w", lazy.spawn("{} -e sh -c nmtui".format(terminal))),
+    Key([mod], "v", lazy.spawn("emacsclient -nc")),
+    Key([mod], "o", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
+    Key([mod], "s", lazy.spawn("write_stylus")),
+    Key([mod], "b", lazy.spawn("brave")),
 
     # suspend system
-    Key([mod, "shift"], "s", lazy.spawn("systemctl suspend")),
-    Key([mod, "shift"], "l", lazy.spawn("slock")),
+    Key([mod, "shift"], "l", lazy.spawn("systemctl suspend")),
 
     # Move windows up or down in current stack
-    Key([mod, "control"], "t", lazy.layout.shuffle_down(),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_down(),
         desc="Move window down in current stack "),
-    Key([mod, "control"], "h", lazy.layout.shuffle_up(),
+    Key([mod, "shift"], "t", lazy.layout.shuffle_up(),
         desc="Move window up in current stack "),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next(),
-        desc="Switch window focus to other pane(s) of stack"),
+    #Key([mod], "space", lazy.layout.next(),
+    #    desc="Switch window focus to other pane(s) of stack"),
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate(),
@@ -90,173 +91,118 @@ keys = [
     Key([mod, "control"], "Left", lazy.layout.normalise()),
     Key([mod, "control"], "Right", lazy.layout.maximise()),
 
-    # moving screens
-    Key([mod, "shift"], "h", lazy.function(to_screen(2))),
-    Key([mod, "shift"], "n", lazy.function(to_screen(1))),
-    Key([mod, "shift"], "t", lazy.function(to_screen(0))),
-
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod2], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("{} -e {}".format(terminal, shell)), desc="Launch terminal"),
 
     # Run dmenu/dmenu scripts
     Key([mod], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
-    Key([mod2], "e", lazy.spawn("dmenu_run -m 0"), desc="Run Dmenu"),
     Key([mod], "g", lazy.spawn("/home/oscar/scripts/bookmenu")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "a", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod2, "shift"], "a", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "shift"], "p", lazy.restart(), desc="Restart qtile"),
-    Key([mod2, "shift"], "p", lazy.restart(), desc="Restart qtile"),
     Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown qtile"),
 
     # general volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2%")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -2%")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 5%+")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-")),
 ]
 
-def weather():
-    url = "https://api.climacell.co/v3/weather/realtime"
+def get_brightness():
+    return str(int((int(str(subprocess.Popen(["brightnessctl", "g"], stdout=subprocess.PIPE).communicate()[0])[2:-3]) / 255) * 100)) + "%"
 
-    querystring = {"lat":"56.434","lon":"-2.943","unit_system":"si","fields":"wind_speed:knots,wind_gust:knots,wind_direction","apikey":"SK6KWrtF7LufrgajNY4AN2mjs4xUkotF"}
+def get_wifi():
+    string = str((subprocess.Popen(["/home/oscar/.config/qtile/wifi.sh"], stdout=subprocess.PIPE).communicate()[0])[20])
 
-    response = requests.request("GET", url, params=querystring)
-      
-    if response.status_code == requests.codes.ok:
-        data = response.json()
-        wind_direction = data["wind_direction"]["value"]
-        wind_speed_kts = data["wind_speed"]["value"]
-        wind_gust = data["wind_gust"]["value"]
-            
-        bff = 0
-
-        if wind_speed_kts > 1:
-            bff = 1
-        if wind_speed_kts > 4:
-            bff = 2
-        if wind_speed_kts > 7:
-            bff = 3
-        if wind_speed_kts > 11:
-            bff = 4
-        if wind_speed_kts > 17:
-            bff = 5
-        if wind_speed_kts > 22:
-            bff = 6
-        if wind_speed_kts > 28:
-            bff = 7
-        if wind_speed_kts > 34:
-            bff = 8
-        if wind_speed_kts > 41:
-            bff = 9
-        if wind_speed_kts > 48:
-            bff = 10
-        if wind_speed_kts > 56:
-            bff = 11
-        if wind_speed_kts > 64:
-            bff = 12
-
-        
-    wind_speed_kts = int(float(wind_speed_kts))
-    wind_gust = int(float(wind_gust))
-    if wind_speed_kts < 10:
-        wind_speed_kts = "0{}".format(wind_speed_kts)
-    if wind_gust < 10:
-        wind_gust = "0{}".format(wind_gust)
-
-    if wind_direction < 10:
-        wind_direction = "00{}".format(int(float(wind_direction)))
-    elif wind_direction < 100:
-        wind_direction = "0{}".format(int(float(wind_direction)))
+    if string == "":
+        string = "N/A"
     else:
-        wind_direction = int(float(wind_direction))
+        string = string + "%"
 
-    text = "{0}@{1} G{2} [{3}]".format(wind_direction, wind_speed_kts, wind_gust, bff)
-    return text
+    return string
 
 ##### GROUPS #####
 group_names = [("1: Editor", {'layout': 'monadtall'}),
-               ("2: Chrome", {'layout': 'monadtall'}),
-               ("3: Terminals", {'layout': 'monadwide'}),
-               ("4: Discord", {'layout': 'monadwide'}),
-               ("5: Spotify", {'layout': 'monadtall'}),
+               ("2: Browser", {'layout': 'monadtall'}),
+               ("3: Terminals", {'layout': 'monadtall'}),
+               ("4: Discord", {'layout': 'monadtall'}),
+               ("5: Write", {'layout': 'monadtall'}),
                ("6: Email", {'layout': 'monadtall'}),
-               ("7", {'layout': 'monadtall'}),
+               ("7: Notion", {'layout': 'monadtall'}),
                ("8", {'layout': 'monadtall'}),
-               ("9", {'layout': 'monadtall'})]
+               ("9", {'layout': 'floating'})]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
 for i, (name, kwargs) in enumerate(group_names, 1):
-    if name in ["1: Editor", "2: Chrome", "5: Spotify", "8"]:
-        keys.append(Key([mod], str(i), lazy.function(to_screen(0)), lazy.group[name].toscreen()))        # Switch to another group
-        keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-        keys.append(Key([mod2], str(i), lazy.function(to_screen(0)), lazy.group[name].toscreen()))        # Switch to another group
-        keys.append(Key([mod2, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-    elif name in ["4: Discord", "7"]:
-        keys.append(Key([mod], str(i), lazy.function(to_screen(1)), lazy.group[name].toscreen()))        # Switch to another group
-        keys.append(Key([mod2], str(i), lazy.function(to_screen(1)), lazy.group[name].toscreen()))        # Switch to another group
-        keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-        keys.append(Key([mod2, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-    else:
-        keys.append(Key([mod], str(i), lazy.function(to_screen(2)), lazy.group[name].toscreen()))        # Switch to another group
-        keys.append(Key([mod2], str(i), lazy.function(to_screen(2)), lazy.group[name].toscreen()))        # Switch to another group
-        keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
-        keys.append(Key([mod2, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
 
-
-##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
-layout_theme = {"border_width": 0,
-                "margin": 6,
-                "border_focus": "e1acff",
-                "border_normal": "1D2330"
+# DEFAULT THEME SETTINGS FOR LAYOUTS #####
+layout_theme = {"border_width": BORDER,
+                "margin": MARGIN,
+                "border_focus": colors[4][0],
+                "border_normal": colors[0][0]
                 }
 
 
 layouts = [
-    layout.Max(),
+    # layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(margin=MARGIN, border_width=BORDER, corner_radius=CORNER_RADIUS, border_normal=colors[0][0], border_focus=colors[4][0]),
-    layout.MonadWide(margin=MARGIN, border_width=BORDER, corner_radius=CORNER_RADIUS, border_normal=colors[0][0], border_focus=colors[4][0]),
-    layout.Floating(border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0], corner_radius=CORNER_RADIUS)
+    # layout.MonadTall(margin=MARGIN, border_width=BORDER, border_normal=colors[0][0], border_focus=colors[4][0], corner_radius=CORNER_RADIUS),
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    layout.Floating(**layout_theme),
     # layout.RatioTile(),
-    # layout.Tile(),
+    #layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
-
-
-##### PROMPT #####
+# PROMPT #####
 prompt = "[{} ]$".format(os.environ["USER"])
 
-##### DEFAULT WIDGET SETTINGS #####
+# DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
-    font="Deja Vu Sans Mono for Powerline",
-    fontsize = 12,
-    padding = 2,
+    font="DejaVuSansMono Nerd Font",
+    fontsize=12,
+    padding=2,
     background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
 
-##### WIDGETS #####
+# WIDGETS #####
 
-def init_widgets_list(visible_groups, type_screen):
-    if type_screen == 0:
-        widgets_list = [
+
+def init_widgets_list():
+    widgets_list = [
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 6,
+                        foreground = colors[2],
+                        background = colors[0]
+                        ),
+               widget.Image(
+                        background = colors[2],
+                        filename = "/home/oscar/.config/qtile/icons/python.png",
+                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("onboard")}
+                        ),
                widget.Sep(
                         linewidth = 0,
                         padding = 6,
@@ -264,7 +210,7 @@ def init_widgets_list(visible_groups, type_screen):
                         background = colors[0]
                         ),
                widget.GroupBox(font="Deja Vu Sans Mono",
-                        fontsize = 9,
+                        fontsize = 11,
                         margin_y = 3,
                         margin_x = 0,
                         padding_y = 5,
@@ -280,8 +226,7 @@ def init_widgets_list(visible_groups, type_screen):
                         other_current_screen_border = colors[0],
                         other_screen_border = colors[0],
                         foreground = colors[2],
-                        background = colors[0],
-                        visible_groups=visible_groups
+                        background = colors[0]
                         ),
                widget.Prompt(
                         prompt=prompt,
@@ -307,7 +252,6 @@ def init_widgets_list(visible_groups, type_screen):
                         foreground = colors[4],
                         padding=0,
                         fontsize=20
-                        
                         ),
                widget.TextBox(
                         text=" CPU:",
@@ -342,19 +286,23 @@ def init_widgets_list(visible_groups, type_screen):
                         padding = 5
                         ),
                widget.TextBox(
-                       text=u'\uE0B2',
-                       background = colors[5],
-                       foreground = colors[4],
-                       padding=0,
-                       fontsize=20
-                       ),
+                        text=u'\uE0B2',
+                        background = colors[5],
+                        foreground = colors[4],
+                        padding=0,
+                        fontsize=20
+                        ),
+               widget.TextBox(
+                       text=" WLAN:",
+                        foreground=colors[2],
+                        background=colors[4],
+                        padding = 0
+                        ),
                widget.GenPollText(
-                       background = colors[4],
-                       foreground = colors[2],
-                       padding = 5,
-                       fontsize = 14,
-                       func = weather,
-                       update_interval = 300,
+                        foreground=colors[2],
+                        background=colors[4],
+                        update_interval=1,
+                        func=get_wifi
                        ),
                widget.TextBox(
                         text=u'\uE0B2',
@@ -364,16 +312,55 @@ def init_widgets_list(visible_groups, type_screen):
                         fontsize=20
                         ),
                widget.TextBox(
-                       text=" VOL:",
+                       text=" BRT:",
                         foreground=colors[2],
                         background=colors[5],
                         padding = 0
                         ),
-               widget.Volume(
-                        foreground = colors[2],
+               widget.GenPollText(
+                        foreground=colors[2],
+                        background=colors[5],
+                        update_interval=0.1,
+                        func = get_brightness
+                       ),
+               widget.TextBox(
+                        text=u'\uE0B2',
                         background = colors[5],
-                        padding = 5
+                        foreground = colors[4],
+                        padding=0,
+                        fontsize=20
                         ),
+               widget.TextBox(
+                       text=" BATT:",
+                        foreground=colors[2],
+                        background=colors[4],
+                        padding = 0
+                        ),
+               widget.Battery(
+                        foreground=colors[2],
+                        background=colors[4],
+                        update_interval=1,
+                        low_foreground="#FFFFFF",
+                        format="{char} {percent:2.0%} {hour:d}:{min:02d}",
+                       ),
+               widget.TextBox(
+                        text=u'\uE0B2',
+                        background = colors[4],
+                        foreground = colors[5],
+                        padding=0,
+                        fontsize=20
+                        ),
+               widget.TextBox(
+                        text=" VOL:",
+                        foreground=colors[2],
+                        background=colors[5],
+                        padding = 0,
+                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("pavucontrol")}
+                        ),
+               widget.Volume(
+                         foreground = colors[2],
+                         background = colors[5]
+               ),
                widget.TextBox(
                         text=u'\uE0B2',
                         background = colors[5],
@@ -412,241 +399,16 @@ def init_widgets_list(visible_groups, type_screen):
                         background = colors[5]
                         )
               ]
-    elif type_screen == 1:
-        widgets_list = [
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-               widget.GroupBox(font="Deja Vu Sans Mono",
-                        fontsize = 9,
-                        margin_y = 3,
-                        margin_x = 0,
-                        padding_y = 5,
-                        padding_x = 5,
-                        borderwidth = 3,
-                        active = colors[2],
-                        inactive = colors[2],
-                        rounded = False,
-                        highlight_color = colors[1],
-                        highlight_method = "line",
-                        this_current_screen_border = colors[3],
-                        this_screen_border = colors [4],
-                        other_current_screen_border = colors[0],
-                        other_screen_border = colors[0],
-                        foreground = colors[2],
-                        background = colors[0],
-                        visible_groups=visible_groups
-                        ),
-               widget.Prompt(
-                        prompt=prompt,
-                        font="Deja Vu Sans Mono",
-                        padding=10,
-                        foreground = colors[3],
-                        background = colors[1]
-                        ),
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 40,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-               widget.WindowName(
-                        foreground = colors[6],
-                        background = colors[0],
-                        padding = 0
-                        ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[0],
-                        foreground = colors[4],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.Pomodoro(
-                       foreground=colors[2],
-                       background=colors[4],
-                       padding = 5,
-                       color_inactive=colors[2],
-                       color_active=colors[2],
-                       color_break=colors[2]
-                       ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[4],
-                        foreground = colors[5],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.TextBox(
-                       text=" VOL:",
-                        foreground=colors[2],
-                        background=colors[5],
-                        padding = 0
-                        ),
-               widget.Volume(
-                        foreground = colors[2],
-                        background = colors[5],
-                        padding = 5
-                        ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[5],
-                        foreground = colors[4],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.CurrentLayoutIcon(
-                        custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-                        foreground = colors[0],
-                        background = colors[4],
-                        padding = 0,
-                        scale=0.7
-                        ),
-               widget.CurrentLayout(
-                        foreground = colors[2],
-                        background = colors[4],
-                        padding = 5
-                        ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[4],
-                        foreground = colors[5],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.Clock(
-                        foreground = colors[2],
-                        background = colors[5],
-                        format="%A, %B %d %H:%M:%S "
-                        ),
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 10,
-                        foreground = colors[0],
-                        background = colors[5]
-                        )
-              ]
-    else:
-        widgets_list = [
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-               widget.GroupBox(font="Deja Vu Sans Mono",
-                        fontsize = 9,
-                        margin_y = 3,
-                        margin_x = 0,
-                        padding_y = 5,
-                        padding_x = 5,
-                        borderwidth = 3,
-                        active = colors[2],
-                        inactive = colors[2],
-                        rounded = False,
-                        highlight_color = colors[1],
-                        highlight_method = "line",
-                        this_current_screen_border = colors[3],
-                        this_screen_border = colors [4],
-                        other_current_screen_border = colors[0],
-                        other_screen_border = colors[0],
-                        foreground = colors[2],
-                        background = colors[0],
-                        visible_groups=visible_groups
-                        ),
-               widget.Prompt(
-                        prompt=prompt,
-                        font="Deja Vu Sans Mono",
-                        padding=10,
-                        foreground = colors[3],
-                        background = colors[1]
-                        ),
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 40,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-               widget.WindowName(
-                        foreground = colors[6],
-                        background = colors[0],
-                        padding = 0
-                        ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[0],
-                        foreground = colors[5],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.TextBox(
-                       text=" VOL:",
-                        foreground=colors[2],
-                        background=colors[5],
-                        padding = 0
-                        ),
-               widget.Volume(
-                        foreground = colors[2],
-                        background = colors[5],
-                        padding = 5
-                        ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[5],
-                        foreground = colors[4],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.CurrentLayoutIcon(
-                        custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-                        foreground = colors[0],
-                        background = colors[4],
-                        padding = 0,
-                        scale=0.7
-                        ),
-               widget.CurrentLayout(
-                        foreground = colors[2],
-                        background = colors[4],
-                        padding = 5
-                        ),
-               widget.TextBox(
-                        text=u'\uE0B2',
-                        background = colors[4],
-                        foreground = colors[5],
-                        padding=0,
-                        fontsize=20
-                        ),
-               widget.Clock(
-                        foreground = colors[2],
-                        background = colors[5],
-                        format="%A, %B %d %H:%M:%S "
-                        ),
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 10,
-                        foreground = colors[0],
-                        background = colors[5]
-                        )
-              ]
     return widgets_list
 
 ##### SCREENS ##### (TRIPLE MONITOR SETUP)
 
-def init_widgets_screen1(visible_groups, type_screen):
-    widgets_screen1 = init_widgets_list(visible_groups, type_screen)
-    return widgets_screen1                       # Slicing removes unwanted widgets on Monitors 1,3
-
-def init_widgets_screen2(visible_groups, type_screen):
-    widgets_screen2 = init_widgets_list(visible_groups, type_screen)
+def init_widgets_screen2():
+    widgets_screen2 = init_widgets_list()
     return widgets_screen2                       # Monitor 2 will display all widgets in widgets_list
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen2(["1: Editor", "2: Chrome", "5: Spotify", "8"], 0), opacity=1, size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(["4: Discord", "7"], 1), opacity=1, size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(["3: Terminals", "6: Email", "9"], 2), opacity=1, size=20))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1, size=20))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
@@ -655,9 +417,9 @@ if __name__ in ["config", "__main__"]:
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
+    Drag([mod, "shift"], "Button1", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Click([mod], "Button3", lazy.window.bring_to_front())
 ]
 
 dgroups_key_binder = None
@@ -665,10 +427,10 @@ dgroups_app_rules = []  # type: List
 main = None
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     {'wmclass': 'confirm'},
+    {'wmclass': 'Onboard'},
     {'wmclass': 'dialog'},
     {'wmclass': 'download'},
     {'wmclass': 'error'},
@@ -676,15 +438,16 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'notification'},
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
+    {'wmclass': 'ulauncher'},
     {'wmclass': 'confirmreset'},  # gitk
     {'wmclass': 'makebranch'},  # gitk
     {'wmclass': 'maketag'},  # gitk
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
+], border_width=0)
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 
 @hook.subscribe.startup
 def start_once():

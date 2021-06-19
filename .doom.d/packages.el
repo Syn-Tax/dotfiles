@@ -30,7 +30,7 @@
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe
 ;; from Doom or MELPA/ELPA/Emacsmirror:
 ;(package! builtin-package :recipe (:nonrecursive t))
-
+;(package! builtin-package-2 :recipe (:repo "myfork/package"))
 
 ;; Specify a `:branch' to install a package from a particular branch or tag.
 ;; This is required for some packages whose default branch isn't 'master' (which
@@ -48,7 +48,10 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-(package! darkroom)
-(package! org-super-agenda)
 (package! org-plus-contrib)
 (package! org-wild-notifier)
+(package! wc-mode)
+(package! org-ref)
+(package! ivy-bibtex)
+(package! edit-server)
+(package! all-the-icons-dired)
