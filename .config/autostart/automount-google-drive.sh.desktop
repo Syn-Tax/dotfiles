@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/oscar/scripts/automount-google-drive.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=automount-google-drive
+Name=automount-google-drive
+Comment[en_GB]=
+Comment=

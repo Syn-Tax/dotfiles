@@ -1,0 +1,29 @@
+[Data Source]
+DisplayName=twocap06@gmail.com
+Enabled=true
+Parent=e36e836f402ae09d9e844fe66ec3a946f6273b76
+
+[Mail Submission]
+SentFolder=folder://local/Sent
+TransportUid=95dacb65667c0de97ece902a546b3df9dfbfb818
+RepliesToOriginFolder=false
+UseSentFolder=true
+
+[Mail Composition]
+Bcc=
+Cc=
+DraftsFolder=folder://local/Drafts
+ReplyStyle=default
+SignImip=true
+TemplatesFolder=
+StartBottom=inconsistent
+TopSignature=inconsistent
+Language=
+
+[Mail Identity]
+Address=twocap06@gmail.com
+Aliases=
+Name=
+Organization=
+ReplyTo=
+SignatureUid=none

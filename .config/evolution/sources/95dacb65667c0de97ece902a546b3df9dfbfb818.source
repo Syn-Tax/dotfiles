@@ -1,0 +1,23 @@
+[Data Source]
+DisplayName=twocap06@gmail.com
+Enabled=true
+Parent=e36e836f402ae09d9e844fe66ec3a946f6273b76
+
+[Authentication]
+Host=smtp.gmail.com
+Method=XOAUTH2
+Port=465
+ProxyUid=system-proxy
+RememberPassword=true
+User=twocap06@gmail.com
+CredentialName=
+IsExternal=false
+
+[Security]
+Method=ssl-on-alternate-port
+
+[Mail Transport]
+BackendName=smtp
+
+[Smtp Backend]
+ReencodeData=false
