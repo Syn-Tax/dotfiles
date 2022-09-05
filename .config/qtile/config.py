@@ -66,7 +66,7 @@ keys = [
     # Launch programs
     Key([mod], "w", lazy.spawn("{} -e sh -c nmtui".format(terminal))),
     Key([mod], "v", lazy.spawn("emacsclient -nc")),
-    Key([mod], "o", lazy.spawn("flameshot gui -p /home/oscar/screenshots/")),
+    Key([mod], "o", lazy.spawn("flameshot gui")),
     Key([mod], "s", lazy.spawn("write_stylus")),
     Key([mod], "b", lazy.spawn("brave")),
 
@@ -448,6 +448,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(wm_class='volume-osd.py')
 ], border_width=0)
 auto_fullscreen = True
 focus_on_window_activation = "focus"

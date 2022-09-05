@@ -58,6 +58,10 @@
 
 (setq-default frame-title-format '("Doom Emacs"))
 
+(setq-default indent-tabs-mode nil)
+
+(setq-default scroll-margin 8)
+
 (defun automated-commit ()
   (interactive)
   (magit-call-git "add" ".")
@@ -137,6 +141,11 @@
 (setq org-startup-with-inline-images 1)
 (setq org-agenda-files (delete "~/Notes/.gitignore" (file-expand-wildcards "~/Notes/*")))
 
+(setq reftex-default-bibliography '("/home/oscar/AES-feedback-project/Reports/bibliography.bib"))
+(eval-after-load 'reftex-vars
+  '(progn
+     (setq reftex-cite-format '((?\C-m . "[@%l]")))))
+
 ;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)
                            ;;(darkroom-mode)
 ;;                           ))
@@ -183,6 +192,11 @@
   (setq  org-latex-pdf-process
          '("latexmk -pdf %f"))
   )
+
+(add-hook 'org-mode-hook
+      '(lambda ()
+         (delete '("\\.pdf\\'" . default) org-file-apps)
+         (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))))
 
 (after! writeroom-mode
   (setq +zen-text-scale 1.5)
@@ -233,11 +247,11 @@
 
 (use-package! org-ref
   :init
-;;  (setq org-latex-pdf-process
-;;        '("pdflatex -interaction nonstopmode -output-directory %o %f"
-;;          "bibtex %b"
-;;          "pdflatex -interaction nonstopmode -output-directory %o %f"
-;;          "pdflatex -interaction nonstopmode -output-directory %o %f"))
+ (setq org-latex-pdf-process
+       '("pdflatex -interaction nonstopmode -output-directory %o %f"
+         "bibtex %b"
+         "pdflatex -interaction nonstopmode -output-directory %o %f"
+         "pdflatex -interaction nonstopmode -output-directory %o %f"))
   (setq org-ref-completion-library 'org-ref-ivy-cite)
   (setq bibtex-dialect 'biblatex)
 )
@@ -279,3 +293,5 @@
         :localleader
         :desc "send" "s" #'org-ctrl-c-ctrl-c)
 (setq mu4e-compose--org-msg-toggle-next nil)
+
+(use-package! kbd-mode)

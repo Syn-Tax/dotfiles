@@ -54,3 +54,6 @@
 (package! edit-server)
 (package! all-the-icons-dired)
 (package! mu4e-alert :disable t)
+(package! kbd-mode
+  :recipe (:host github
+           :repo "kmonad/kbd-mode"))

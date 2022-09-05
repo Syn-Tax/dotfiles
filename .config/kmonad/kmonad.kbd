@@ -1,0 +1,84 @@
+(defcfg
+  input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "KMonad Output")
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret   del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    \
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght
+  )
+
+
+(defalias
+  ;; home-row mods
+  a (tap-next-release a lalt)
+  o (tap-next-release o lmet)
+  ;;e (tap-next-release e lctl)
+  ;;u (tap-next-release u lsft)
+
+  s (tap-next-release s lalt)
+  n (tap-next-release n lmet)
+  ;;t (tap-next-release t lctl)
+  ;;h (tap-next-release h lsft)
+
+  bsp (tap-next-release bspc lsft)
+  spc (tap-next-release spc lctl)
+
+  ;; layer-tap
+  esc (tap-next-release esc (layer-toggle nav))
+  ret (tap-next-release ret (layer-toggle numsym))
+
+  func (layer-toggle func)
+
+  ;; generic
+  lpr S-9
+  rpr S-0
+
+  ntb C-pgdn
+  ptb C-pgup
+  npg A-rght
+  ppg A-left
+
+  wrd C-rght
+  bck C-left
+)
+
+(deflayer dvorak
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX         ssrq slck pause
+  XX   '    ,    .    p    y    XX   f    g    c    r    l    XX   bspc  ins  home pgup
+  XX   @a   @o   e    u    i    XX   d    h    t   @n   @s   XX   ret   del  end  pgdn
+  XX   ;    q    j    k    x    XX   b    m    w    v    z    XX
+  XX   XX   XX   XX   @esc @bsp XX   @spc @ret  XX   XX  XX   XX              up
+  XX   XX   XX             XX                   XX   XX  XX   XX         left down rght
+)
+
+(deflayer nav
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX        ssrq slck pause
+  XX   XX   XX   pgup pgdn del  XX   @ppg @ptb @ntb @npg XX   XX   bspc  ins  home pgup
+  XX   lalt lmet lctl lsft tab  XX   left down up   rght XX   XX   ret   del  end  pgdn
+  XX   XX   XX   XX   XX   XX   XX   @bck XX   @wrd XX   XX   XX
+  XX   XX   XX   XX   XX   bspc XX   spc  @func XX   XX  XX   XX              up
+  XX   XX   XX             XX                   XX   XX  XX   XX         left down rght
+)
+
+(deflayer numsym
+  XX   XX   XX   XX    XX   XX   XX   XX   XX   XX   XX    XX   XX        ssrq slck pause
+  XX   grv  [    @lpr  @rpr ]    XX   /    7    8    9     -    XX   bspc  ins  home pgup
+  XX   lalt lmet lctl  lsft |    XX   \\   4    4    6     _    XX   ret   del  end  pgdn
+  XX   S-[  S-]  S-grv +    =    XX   0    1    2    3     ?    XX
+  XX   XX   XX   XX   @func bspc XX   spc  XX   XX   XX   XX   XX              up
+  XX   XX   XX             XX                   XX   XX   XX   XX         left down rght
+  )
+
+(deflayer func
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    XX   XX         ssrq slck pause
+  XX   f1   f2   f3   f4   f5   XX   XX   brdn bru  XX    XX   XX   bspc  ins  home pgup
+  XX   f6   f7   f8   f9   f10  XX   XX   vold volu XX    XX   XX   ret   del  end  pgdn
+  XX   f11  f12  XX   XX   XX   XX   XX   XX   XX   XX    XX   XX
+  XX   XX   XX   XX   XX   bspc XX   spc  XX   XX   XX   XX   XX              up
+  XX   XX   XX             XX                   XX   XX   XX   XX         left down rght
+)
